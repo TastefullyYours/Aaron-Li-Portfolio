@@ -1,1 +1,827 @@
-# Aaron-Li-Portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Li — Brand & Marketing Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:         #FFFFFF;
+    --sky:           #F4F8FD;
+    --mist:          #DDE8F5;
+    --blue:          #4A6E96;
+    --blue-light:    #7AAED0;
+    --lavender:      #C5B4D6;
+    --lavender-deep: #9B85B5;
+    --periwinkle:    #A8C8E8;
+    --navy:          #1E3055;
+    --navy-mid:      #2D4A7A;
+    --ink:           #1A2035;
+    --green:         #2D5A3D;
+    --green-mid:     #3D7A52;
+    --green-light:   #5A9E6F;
+    --green-pale:    #E8F2EC;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(45,90,61,0.15);
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green-light); }
+
+  .nav-resume {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    border: 1px solid var(--green);
+    padding: 0.45rem 1.1rem;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-resume:hover { background: var(--green); color: var(--white); }
+
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #EAF4FC 0%, #F0EAFA 100%);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 5rem;
+    align-items: center;
+    padding: 8rem 4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -150px; right: -150px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(45,90,61,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content { display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 1; }
+  .hero-photo-wrap { position: relative; flex-shrink: 0; z-index: 1; }
+
+  .hero-photo {
+    width: 300px; height: 380px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 2px;
+    display: block;
+    box-shadow: 0 24px 64px rgba(30,48,85,0.16), 0 0 0 1px rgba(45,90,61,0.3);
+  }
+
+  .hero-photo-wrap::after {
+    content: '';
+    position: absolute;
+    top: 14px; left: 14px; right: -14px; bottom: -14px;
+    border: 1px solid var(--green-light);
+    z-index: -1;
+    border-radius: 2px;
+  }
+
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 300;
+    line-height: 0.95;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-name span { display: block; color: var(--green); }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    color: var(--blue);
+    max-width: 520px;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 0.85rem 2.4rem;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .hero-cta:hover { background: var(--green); color: var(--white); }
+
+  .botanical-divider { width: 100%; overflow: hidden; line-height: 0; padding: 1rem 0; text-align: center; }
+  .botanical-divider svg { width: min(600px, 90%); height: auto; opacity: 0.55; }
+
+  section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { font-size: 1.05rem; line-height: 1.85; color: #3a3a4a; margin-bottom: 1.4rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-sidebar { padding-top: 0.5rem; }
+  .sidebar-block { margin-bottom: 2.5rem; }
+
+  .sidebar-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--green-pale);
+    padding-bottom: 0.5rem;
+  }
+
+  .sidebar-block p, .sidebar-block li { font-size: 0.92rem; color: #4a4a5a; line-height: 1.7; }
+  .sidebar-block ul { list-style: none; }
+  .sidebar-block li::before { content: '—'; color: var(--green); margin-right: 0.5rem; font-size: 0.8rem; }
+
+  #experience { background: var(--navy); max-width: 100%; padding: 6rem 0; }
+  #experience > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+  #experience .section-title { color: var(--white); }
+  #experience .section-eyebrow { color: var(--green-light); }
+  .exp-list { display: flex; flex-direction: column; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(90,158,111,0.15);
+    align-items: start;
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { padding-top: 0.15rem; }
+  .exp-date { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.4rem; }
+  .exp-company { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--white); font-weight: 400; margin-bottom: 0.2rem; }
+  .exp-location { font-size: 0.78rem; color: rgba(255,255,255,0.4); letter-spacing: 0.05em; }
+  .exp-role { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--periwinkle); margin-bottom: 1rem; margin-top: 0.15rem; }
+  .exp-bullets { list-style: none; }
+
+  .exp-bullets li {
+    font-size: 0.93rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+  }
+
+  .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 1px; background: var(--green-light); }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .project-card {
+    background: var(--sky);
+    border: 1px solid var(--mist);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(45,90,61,0.12); }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--green); z-index: 2; }
+  .project-card--wide { grid-column: span 3; }
+  .project-card-body { padding: 2.2rem; flex: 1; display: flex; flex-direction: column; }
+  .project-tag { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.8rem; }
+  .project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--navy); line-height: 1.3; margin-bottom: 1rem; }
+  .project-body { font-size: 0.88rem; color: #5a5a6a; line-height: 1.75; margin-bottom: 1rem; flex: 1; }
+  .project-outcome { font-size: 0.8rem; color: var(--green); font-weight: 500; letter-spacing: 0.03em; margin-bottom: 1.25rem; }
+  .project-outcome::before { content: '↗ '; color: var(--green-light); }
+
+  .project-btn {
+    display: inline-block;
+    padding: 0.55rem 1.4rem;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+
+  .project-btn:hover { background: var(--green); color: var(--white); }
+
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(20, 30, 50, 0.75);
+    z-index: 500;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal { background: var(--white); max-width: 740px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; transform: translateY(20px); transition: transform 0.25s; }
+  .modal-overlay.active .modal { transform: translateY(0); }
+  .modal-header { padding: 2.5rem 2.5rem 0; border-left: 3px solid var(--green); }
+  .modal-tag { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.6rem; }
+  .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--navy); line-height: 1.2; margin-bottom: 0.5rem; }
+  .modal-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; color: var(--navy); cursor: pointer; line-height: 1; opacity: 0.5; transition: opacity 0.2s; font-family: 'DM Sans', sans-serif; }
+  .modal-close:hover { opacity: 1; }
+  .modal-body { padding: 2rem 2.5rem 2.5rem; }
+  .modal-section { margin-bottom: 1.75rem; }
+  .modal-section:last-child { margin-bottom: 0; }
+  .modal-section-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--green-pale); }
+  .modal-section p { font-size: 0.93rem; color: #3a3a4a; line-height: 1.8; }
+  .modal-section ul { list-style: none; }
+  .modal-section ul li { font-size: 0.93rem; color: #3a3a4a; line-height: 1.7; padding-left: 1.2rem; position: relative; margin-bottom: 0.4rem; }
+  .modal-section ul li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 1px; background: var(--green); }
+  .modal-outcome { background: var(--green-pale); border-left: 3px solid var(--green); padding: 1rem 1.25rem; font-size: 0.9rem; color: var(--green); font-weight: 500; margin-top: 1.5rem; }
+
+  #skills { background: var(--mist); max-width: 100%; padding: 6rem 0; }
+  #skills > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-bottom: 4rem; }
+  .skill-group-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(45,90,61,0.2); }
+  .skill-group ul { list-style: none; }
+  .skill-group li { font-size: 0.9rem; color: #4a4a5a; padding: 0.35rem 0; border-bottom: 1px solid rgba(30,48,85,0.06); }
+  .certs-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 1.5rem; font-weight: 300; }
+  .certs-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cert-pill { padding: 0.5rem 1.25rem; border: 1px solid var(--green); font-size: 0.82rem; color: var(--green); letter-spacing: 0.04em; background: rgba(255,255,255,0.6); }
+
+  #contact { text-align: center; padding: 7rem 4rem; max-width: 700px; margin: 0 auto; }
+  #contact .section-title { margin-bottom: 1rem; }
+  .contact-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--blue); margin-bottom: 3rem; line-height: 1.6; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-link { display: inline-block; padding: 0.85rem 2.2rem; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
+  .contact-link.primary { background: var(--navy); color: var(--white); }
+  .contact-link.primary:hover { background: var(--navy-mid); }
+  .contact-link.secondary { border: 1px solid var(--green); color: var(--green); }
+  .contact-link.secondary:hover { background: var(--green); color: var(--white); }
+  .contact-detail { margin-top: 2.5rem; font-size: 0.85rem; color: #888; letter-spacing: 0.04em; }
+
+  footer { background: var(--navy); text-align: center; padding: 2rem; font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; gap: 2.5rem; }
+    .hero-photo-wrap { order: -1; display: flex; justify-content: center; }
+    .hero-photo { width: 200px; height: 250px; }
+    section { padding: 5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card--wide { grid-column: auto; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    #experience > .inner, #skills > .inner { padding: 0 1.5rem; }
+    .modal { max-height: 90vh; }
+    .modal-header, .modal-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-links { flex-direction: column; align-items: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-name" href="#hero">Aaron Li</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-resume" href="assets/aaron-li-resume.pdf" download>Résumé</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Marketing Strategy · Brand · PR</p>
+    <h1 class="hero-name">Aaron<span>Li</span></h1>
+    <p class="hero-tagline">Psychology-driven strategy with flavor — because people don't change their minds, brands change them for them.</p>
+    <div class="hero-ctas">
+      <a href="#about" class="hero-cta">Explore my work</a>
+      <a href="assets/aaron-li-resume.pdf" download class="hero-cta">Download Résumé</a>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <img class="hero-photo" src="assets/headshot.jpeg" alt="Aaron Li — Brand & Marketing Strategist" />
+  </div>
+</section>
+
+<div class="botanical-divider" style="background:var(--white); padding:2.5rem 0;">
+  <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50 40 Q150 20 300 40 Q450 60 550 40" stroke="#5A9E6F" stroke-width="1" fill="none"/>
+    <circle cx="100" cy="33" r="3.5" fill="#A8C8E8" opacity="0.7"/>
+    <circle cx="130" cy="29" r="2.5" fill="#C5B4D6" opacity="0.6"/>
+    <circle cx="300" cy="40" r="4" fill="#5A9E6F" opacity="0.5"/>
+    <circle cx="470" cy="47" r="3.5" fill="#A8C8E8" opacity="0.7"/>
+    <ellipse cx="200" cy="36" rx="12" ry="5" fill="#2D5A3D" opacity="0.2" transform="rotate(-15 200 36)"/>
+    <ellipse cx="400" cy="44" rx="11" ry="5" fill="#2D5A3D" opacity="0.2" transform="rotate(12 400 44)"/>
+  </svg>
+</div>
+
+<section id="about">
+  <p class="section-eyebrow">About</p>
+  <h2 class="section-title">Strategy rooted<br>in how people think</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I became a marketer because I stopped believing people have the bandwidth to make better decisions on their own. My background is in Psychology — specifically how choice architecture and behavioral insight can nudge decision-making toward more sustainable, more intentional outcomes.</p>
+      <p>The problem is that individual behavior change is slow. Brand influence isn't. So I got a marketing degree, because if you want to shift how millions of people eat, shop, and live, you don't change minds one at a time — you change the brands they trust.</p>
+      <p>That philosophy has shaped every role I've taken. I spent years in food and hospitality because food is the most universal daily decision there is. I'm now at Tiffany & Co. because they've proven that a luxury brand can lead on responsible sourcing without sacrificing desirability — and I wanted to learn how that's done from the inside.</p>
+      <p>I'm building toward senior marketing strategy and brand roles with high-identity consumer brands that take their influence seriously.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="sidebar-block">
+        <p class="sidebar-label">Education</p>
+        <ul>
+          <li>M.S. Marketing, Consumer Behavior — USC Marshall, 2026</li>
+          <li>B.A. Psychology, Classical Voice Minor — USC Dornsife, 2026</li>
+          <li>GPA 3.98 · Dean's List · Dean's Scholar</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <p class="sidebar-label">Currently</p>
+        <p>SPARK Intern, Tiffany & Co. — Beverly Hills<br>
+        <span style="font-size:0.85rem;color:#888;">June 2026 – Present</span></p>
+      </div>
+      <div class="sidebar-block">
+        <p class="sidebar-label">Languages</p>
+        <ul>
+          <li>English (Native)</li>
+          <li>Taishanese (Native)</li>
+          <li>Italian (Working)</li>
+          <li>Cantonese (Conversational)</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <p class="sidebar-label">Interests</p>
+        <p style="font-size:0.9rem;color:#5a5a6a;">Culinary storytelling · Recipe development · Visual arts · Dancing · Classical voice</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="botanical-divider" style="background:var(--navy); padding:2rem 0;">
+  <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50 40 Q150 55 300 40 Q450 25 550 40" stroke="#5A9E6F" stroke-width="1" fill="none" opacity="0.5"/>
+    <circle cx="180" cy="50" r="3" fill="#C5B4D6" opacity="0.5"/>
+    <circle cx="300" cy="40" r="4" fill="#5A9E6F" opacity="0.4"/>
+    <circle cx="420" cy="30" r="3" fill="#C5B4D6" opacity="0.5"/>
+    <ellipse cx="250" cy="45" rx="10" ry="4" fill="#3D7A52" opacity="0.3" transform="rotate(-10 250 45)"/>
+    <ellipse cx="360" cy="36" rx="10" ry="4" fill="#3D7A52" opacity="0.3" transform="rotate(10 360 36)"/>
+  </svg>
+</div>
+
+<div id="experience">
+  <div class="inner">
+    <p class="section-eyebrow">Experience</p>
+    <h2 class="section-title">Where I've worked</h2>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">June 2026 – Present</p>
+          <p class="exp-company">Tiffany & Co.</p>
+          <p class="exp-location">Beverly Hills, CA</p>
+        </div>
+        <div class="exp-content">
+          <p class="exp-role">SPARK Intern</p>
+          <ul class="exp-bullets">
+            <li>Embedded within a luxury retail flagship environment, supporting client advisors in daily clienteling operations and contributing to store sales targets through direct client engagement.</li>
+            <li>Developing a strategic recommendation for senior leadership on Gen Z consumer engagement, applying consumer behavior research and brand strategy frameworks to a real organizational priority.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">Mar 2026 – May 2026</p>
+          <p class="exp-company">JINYA Holdings</p>
+          <p class="exp-location">Woodland Hills, CA</p>
+        </div>
+        <div class="exp-content">
+          <p class="exp-role">Social Media Coordinator</p>
+          <ul class="exp-bullets">
+            <li>Managed content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for a Japanese-inspired hospitality group with 85+ locations and 1M+ combined followers.</li>
+            <li>Executed influencer outreach, partnership research, and community engagement initiatives across multiple restaurant concepts to drive audience growth and brand consistency.</li>
+            <li>Leveraged social analytics and trend research to optimize content cadence and performance; informed campaigns that generated 20M+ organic views, including a single post with 367K likes and 6K shares.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">May 2025 – May 2026</p>
+          <p class="exp-company">Make Me Hungry</p>
+          <p class="exp-location">Los Angeles, CA</p>
+        </div>
+        <div class="exp-content">
+          <p class="exp-role">Public Relations Coordinator</p>
+          <ul class="exp-bullets">
+            <li>Originated a cause-marketing campaign concept tying a restaurant client to Lupus Awareness Month; the concept was adopted by the CEO and executed as a full brand activation.</li>
+            <li>Researched, drafted, and pitched PR activations, earned media angles, and campaign concepts across a portfolio of 4 hospitality and F&B clients.</li>
+            <li>Ghostwrote media materials, pitch angles, branded content, and campaign messaging across restaurant launches, press dinners, and influencer and media preview events.</li>
+            <li>Built targeted journalist and influencer outreach lists using Muck Rack, coordinating across internal teams, clients, and external partners to execute PR initiatives end-to-end.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">May 2023 – May 2026</p>
+          <p class="exp-company">USC Housing</p>
+          <p class="exp-location">Los Angeles, CA</p>
+        </div>
+        <div class="exp-content">
+          <p class="exp-role">Resident Manager</p>
+          <ul class="exp-bullets">
+            <li>Managed daily operations across 800+ residential units and 14 properties, overseeing resident services, facilities coordination, move-in/out logistics, and vendor relationships.</li>
+            <li>Supervised, trained, and mentored a 13-person student staff team across front desk and residential operations.</li>
+            <li>Streamlined housing workflows and digitized asset management systems, reducing service delays by 50%.</li>
+            <li>Served as first responder for after-hours emergencies including facility failures, resident relocations, and lockouts across a community of 800+ residents.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="botanical-divider" style="background:var(--white); padding:2.5rem 0;">
+  <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50 40 Q150 20 300 40 Q450 60 550 40" stroke="#5A9E6F" stroke-width="1" fill="none"/>
+    <circle cx="220" cy="33" r="3" fill="#A8C8E8" opacity="0.65"/>
+    <circle cx="300" cy="40" r="4" fill="#5A9E6F" opacity="0.5"/>
+    <circle cx="380" cy="47" r="3" fill="#A8C8E8" opacity="0.65"/>
+    <ellipse cx="160" cy="37" rx="11" ry="5" fill="#2D5A3D" opacity="0.18" transform="rotate(-12 160 37)"/>
+    <ellipse cx="440" cy="43" rx="11" ry="5" fill="#2D5A3D" opacity="0.18" transform="rotate(12 440 43)"/>
+  </svg>
+</div>
+
+<section id="projects">
+  <p class="section-eyebrow">Projects</p>
+  <h2 class="section-title">Selected work</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">PR Strategy · Cause Marketing</p>
+        <h3 class="project-title">Make Me Hungry — PR Coordinator</h3>
+        <p class="project-body">A boutique F&B PR agency in LA. Pitched, ghostwrote, and executed earned media and brand activation work across a portfolio of hospitality clients — including a cause-marketing concept that was adopted by a CEO and executed as a full campaign.</p>
+        <p class="project-outcome">CEO-adopted campaign · 4-client PR portfolio · Lupus Awareness activation</p>
+        <button class="project-btn" onclick="openModal('mmh')">View Case Study</button>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">Brand Strategy · Social Media</p>
+        <h3 class="project-title">11VN11 — Brand & Growth Strategy</h3>
+        <p class="project-body">Developed a full brand repositioning and growth strategy for a founder-driven premium lifestyle apparel brand, shifting it from creator-centric to community-first — with a geographic expansion framework, ambassador program, and KPI dashboard.</p>
+        <p class="project-outcome">Full brand strategy · Distribution roadmap · KPI framework</p>
+        <button class="project-btn" onclick="openModal('vn11')">View Case Study</button>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">Revenue Strategy</p>
+        <h3 class="project-title">Break On 2: Latin Fusion — Growth Plan</h3>
+        <p class="project-body">Developed a revenue growth strategy for a Latin fusion dance organization facing budget constraints, designing a salsa night fundraiser series, targeted digital campaigns, and a new cross-functional communications structure.</p>
+        <p class="project-outcome">500% net worth increase · 3× programs funded</p>
+        <button class="project-btn" onclick="openModal('bo2')">View Case Study</button>
+      </div>
+    </div>
+    <div class="project-card project-card--wide">
+      <div class="project-card-body">
+        <p class="project-tag">Behavioral Research · USC Dornsife · Cause Marketing</p>
+        <h3 class="project-title">Identity-Based Motivation & Spoons for Support</h3>
+        <p class="project-body">Two projects anchored in the same core belief: the most effective consumer influence doesn't argue — it aligns with how people already see themselves. One is academic research; the other is applied cause-marketing strategy.</p>
+        <p class="project-outcome">200+ research participants · $50K–$100K+ projected campaign scale</p>
+        <button class="project-btn" onclick="openModal('ibm')">View Case Study</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="skills">
+  <div class="inner">
+    <p class="section-eyebrow">Skills & Certifications</p>
+    <h2 class="section-title">What I bring</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">Strategy</p>
+        <ul>
+          <li>Brand Strategy</li>
+          <li>Consumer Behavior</li>
+          <li>PR & Earned Media</li>
+          <li>Campaign Development</li>
+          <li>Cause Marketing</li>
+          <li>Behavioral Economics</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Digital & Social</p>
+        <ul>
+          <li>Social Media Strategy</li>
+          <li>Content Planning</li>
+          <li>Influencer Marketing</li>
+          <li>Community Management</li>
+          <li>SEO</li>
+          <li>Google Ads / GMB</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Tools & Platforms</p>
+        <ul>
+          <li>Muck Rack</li>
+          <li>Hootsuite</li>
+          <li>Meta Business Suite</li>
+          <li>Canva</li>
+          <li>R Statistics</li>
+          <li>Python</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Research & Analytics</p>
+        <ul>
+          <li>Social Analytics</li>
+          <li>Market Research</li>
+          <li>Behavioral Analysis</li>
+          <li>Excel / MS Office</li>
+          <li>User-Centered Research</li>
+          <li>Data Coding & Analysis</li>
+        </ul>
+      </div>
+    </div>
+    <p class="certs-title">Certifications</p>
+    <div class="certs-list">
+      <span class="cert-pill">Keyword Research Essentials — SEMrush</span>
+      <span class="cert-pill">PPC Strategy — HubSpot</span>
+      <span class="cert-pill">MBA Math Quantitative Skills</span>
+      <span class="cert-pill">Google Analytics 4 — in progress</span>
+      <span class="cert-pill">HubSpot CRM — in progress</span>
+    </div>
+  </div>
+</div>
+
+<div class="botanical-divider" style="background:var(--white); padding:2rem 0;">
+  <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M100 40 Q200 60 300 40 Q400 20 500 40" stroke="#5A9E6F" stroke-width="1" fill="none"/>
+    <circle cx="200" cy="52" r="3" fill="#C5B4D6" opacity="0.6"/>
+    <circle cx="300" cy="40" r="4" fill="#5A9E6F" opacity="0.5"/>
+    <circle cx="400" cy="28" r="3" fill="#C5B4D6" opacity="0.6"/>
+    <ellipse cx="250" cy="46" rx="10" ry="4" fill="#2D5A3D" opacity="0.18" transform="rotate(-8 250 46)"/>
+  </svg>
+</div>
+
+<section id="contact">
+  <p class="section-eyebrow">Contact</p>
+  <h2 class="section-title">Let's build something that matters</h2>
+  <p class="contact-sub">I'm looking for marketing strategy and brand roles with high-identity consumer brands. If that's the kind of work you're doing, I'd love to connect.</p>
+  <div class="contact-links">
+    <a class="contact-link primary" href="mailto:agli@marshall.usc.edu">Send an email</a>
+    <a class="contact-link secondary" href="https://www.linkedin.com/in/aaron-g-li/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="contact-link secondary" href="assets/aaron-li-resume.pdf" download>Download Résumé</a>
+  </div>
+  <p class="contact-detail">agli@marshall.usc.edu &nbsp;·&nbsp; Los Angeles, CA &nbsp;·&nbsp; (208) 971-8378</p>
+</section>
+
+<footer>
+  <p>© 2026 Aaron Li &nbsp;·&nbsp; Brand & Marketing Strategist &nbsp;·&nbsp; Los Angeles</p>
+</footer>
+<div class="modal-overlay" id="modal-mmh" onclick="closeModalOnBg(event, 'mmh')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('mmh')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">PR Strategy · F&B · Cause Marketing</p>
+      <h2 class="modal-title">Make Me Hungry — PR Coordinator</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Context</p>
+        <p>Make Me Hungry is a boutique PR and brand storytelling agency founded by Lisa Strangis, a journalist with 10+ years in food and beverage PR. The agency's client roster spans restaurants, hospitality groups, and travel brands across Los Angeles and internationally — including clients in Queensland, Australia. I joined as a PR Coordinator Intern for a year, supporting a portfolio of 4 active F&B clients across media outreach, campaign strategy, and brand activation work.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">What I Did</p>
+        <ul>
+          <li>Researched, drafted, and pitched media materials including press releases, pitch angles, and editorial outreach for restaurant launches, press dinners, and influencer previews</li>
+          <li>Built and maintained targeted journalist and influencer outreach lists using Muck Rack across markets including Los Angeles, Detroit, and Queensland</li>
+          <li>Translated Muck Rack KPI reports into restructured Excel dashboards — quantifying $52.4M AUD in earned media value for international stakeholders</li>
+          <li>Briefed the CMO and partners using AI-optimized Google Maps visibility reports to improve restaurant discoverability by 1.5x</li>
+          <li>Assisted with event logistics for press dinners, influencer previews, and brand activations including the Tail O' the Pup LA launch event</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">The Lupus Campaign — Strategic Highlight</p>
+        <p>One of the agency's restaurant clients had a beloved team member hospitalized for lupus during May — Lupus Awareness Month. I originated a cause-marketing concept framing the restaurant's response not as a campaign, but as a declaration of who they are as a brand: "This is not a campaign. This is who we are." The concept tied the brand to Lupus Awareness Month through storytelling, community visibility, and the purple ribbon — the disease's awareness symbol. The idea was adopted by the CEO and executed as a full brand activation.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Key Insights</p>
+        <ul>
+          <li>Differentiation and authentic experience drive press-worthiness — not just product announcements</li>
+          <li>PR is relationship-driven and operationally intensive — story angles require context, timing, and the right contact</li>
+          <li>Inspiration for campaigns comes from the inside out: the best pitch I ever wrote started with a person, not a product</li>
+        </ul>
+      </div>
+      <div class="modal-outcome">↗ CEO-adopted cause-marketing campaign · $52.4M AUD EMV quantified · 1.5x location visibility lift</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-vn11" onclick="closeModalOnBg(event, 'vn11')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('vn11')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">Brand Strategy · Social Media · Growth</p>
+      <h2 class="modal-title">11VN11 — Brand & Growth Strategy</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Brief</p>
+        <p>11VN11 is a founder-driven premium lifestyle and apparel brand built around fitness influencer Clinton Suh. The brand had strong creator-driven traction and a SoHo House partnership in NYC, but faced a core challenge: its identity was too tied to the founder, skewed masculine, and lacked the community infrastructure needed to scale. We were tasked with repositioning the brand from creator platform to movement — without losing its premium edge.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Strategic Approach</p>
+        <ul>
+          <li>Conducted market segmentation identifying two distinct audiences: Type A gym rats aged 20–26 in major cities (primary) and wellness-oriented professionals aged 28–35 seeking a third space (secondary)</li>
+          <li>Developed a community-first repositioning strategy centered on inclusivity, approachability, and premium experience — not just founder personality</li>
+          <li>Designed a phased distribution strategy: Online Foundation (Q1) → Community Activation (Q2) → Regular Pop-Ups (Q3) → SoHo House flagship (Q4)</li>
+          <li>Proposed a tiered ambassador program — Creators, Trainers/Experts, and Peer/Micro-influencers — to build authentic community content at scale</li>
+          <li>Developed community activations including a Central Park run club, smoothie bar pop-up, and bi-monthly social mixer series</li>
+          <li>Built a geographic expansion framework: Digital → Local → Physical, seeding from LA and NYC then expanding to Chicago, Austin, Miami, and SF based on e-commerce engagement data</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">KPI Framework</p>
+        <ul>
+          <li>Community & Engagement: 200+ active NYC members by Month 3; 300 event attendees by Week 6</li>
+          <li>Brand Awareness: 80%+ positive sentiment, 5+ NYC media mentions, $250K EMV, 10+ influencer partners</li>
+          <li>Product Experience: 30% repeat purchase rate, 4.5 average product rating via Shopify</li>
+          <li>Revenue: +15% month-over-month growth target</li>
+        </ul>
+      </div>
+      <div class="modal-outcome">↗ Full brand strategy · 4-phase distribution roadmap · Geographic expansion framework · KPI dashboard</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-bo2" onclick="closeModalOnBg(event, 'bo2')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('bo2')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">Revenue Strategy · Event Marketing · Operations</p>
+      <h2 class="modal-title">Break On 2: Latin Fusion — Growth Plan</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Challenge</p>
+        <p>Break On 2 is a USC-based Latin fusion dance organization with a strong community identity but limited organizational funds — which directly constrained the number of events, programs, and experiences the club could offer its ~45 members. As Marketing & Finance Chair, I was responsible for solving the revenue problem without compromising the brand's culturally inclusive, community-driven spirit.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">What I Did</p>
+        <ul>
+          <li>Designed a salsa night fundraiser series as the primary revenue vehicle — culturally authentic to the club's mission and naturally engaging for both members and external audiences</li>
+          <li>Built and executed targeted digital campaigns to drive event awareness, ticket sales, and community growth</li>
+          <li>Led cross-functional meetings across financial, marketing, and executive branches — creating a new internal communications structure and digitizing organizational assets to improve workflow efficiency by 2x</li>
+          <li>Planned and executed culturally inclusive events, socials, and banquets with strategic vendor coordination and audience-focused programming</li>
+          <li>Aligned organizational messaging and branding with the club's artistic and cultural mission to improve external engagement</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">The Outcome</p>
+        <p>The revenue strategy grew organizational net worth by 500% and enabled 3x the number of funded member programs — allowing the club to meaningfully expand its cultural programming and community reach without losing the authenticity that made it worth joining in the first place.</p>
+      </div>
+      <div class="modal-outcome">↗ 500% net worth increase · 3× programs funded · 2× workflow efficiency</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ibm" onclick="closeModalOnBg(event, 'ibm')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('ibm')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">Behavioral Research · Cause Marketing · USC</p>
+      <h2 class="modal-title">Identity-Based Motivation & Spoons for Support</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Through-Line</p>
+        <p>These two projects — one academic, one applied — are rooted in the same belief: the most effective consumer influence doesn't argue with people, it aligns with how they already see themselves. That's the idea behind Identity-Based Motivation, and it's the same principle that makes a well-designed cause-marketing campaign more powerful than a donation ask.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Identity-Based Motivation Research — USC Mind & Society Center</p>
+        <p>As a Research Assistant under the USC Mind & Society Center, I contributed to behavioral research applying Daphna Oyserman's Identity-Based Motivation (IBM) framework to sustainable food choice in university dining environments. The study examined how identity-consistent cues — framing a choice as "what someone like you does" — can shift consumer behavior more effectively than information, incentives, or appeals to willpower alone.</p>
+        <p style="margin-top:0.75rem;">I recruited and engaged 200+ participants on the ground at USC dining halls, working under PhD student Alysia Burbidge as part of the Pathways research project. I also coded behavioral patterns, collaborated with a 7-person research team, and proposed study design enhancements to improve data collection processes.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Spoons for Support — Red Cross × USC Marshall</p>
+        <p>Designed a cause-marketing campaign concept applying behavioral economics to nonprofit fundraising — specifically the challenge of engaging Gen Z donors without high operational cost or brand disruption. The core mechanic: a 30-day POS round-up campaign with a behavioral nudge at the point of checkout, designed to make giving feel like the natural, identity-consistent choice rather than an ask.</p>
+        <p style="margin-top:0.75rem;">The model projected $3,250 per store, with a scalable framework reaching $50K–$100K+ across 25 locations — built for national expansion with minimal disruption to the partner brand's existing operations.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Why This Matters Strategically</p>
+        <p>Both projects reflect the same insight I bring to brand strategy: sustainable behavior change doesn't come from better arguments — it comes from better framing. When brands understand who their consumers believe they are, they can design experiences and campaigns that feel less like marketing and more like belonging.</p>
+      </div>
+      <div class="modal-outcome">↗ 200+ research participants · USC Mind & Society Center · $50K–$100K+ projected campaign scale</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOnBg(event, id) {
+    if (event.target === document.getElementById('modal-' + id)) {
+      closeModal(id);
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+        m.classList.remove('active');
+      });
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+
+</body>
+</html>
