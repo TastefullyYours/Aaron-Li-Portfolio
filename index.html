@@ -53,7 +53,31 @@
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
   .hero-cta { display: inline-block; padding: 0.85rem 2.4rem; border: 1px solid var(--green); color: var(--green); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
   .hero-cta:hover { background: var(--green); color: var(--white); }
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 2;
+  }
 
+  .hero-scroll-indicator span {
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--green), transparent);
+    animation: scrollLine 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+  }
   .botanical-divider { width: 100%; overflow: hidden; line-height: 0; padding: 1rem 0; text-align: center; }
   .botanical-divider svg { width: min(600px, 90%); height: auto; opacity: 0.55; }
 
@@ -195,7 +219,7 @@
   <div class="hero-content">
     <p class="hero-eyebrow">Marketing Strategy · Brand · PR</p>
     <h1 class="hero-name">Aaron<span>Li</span></h1>
-    <p class="hero-tagline">Psychology-driven strategy with flavor </p>
+<p class="hero-tagline"><span class="typing-text"></span></p>
     <div class="hero-ctas">
       <a href="#about" class="hero-cta">Explore my work</a>
       <a href="assets/aaron-li-resume.pdf" download class="hero-cta">Download Résumé</a>
@@ -668,6 +692,18 @@
       document.body.style.overflow = '';
     }
   });
+// Typing animation
+  const typingText = document.querySelector('.typing-text');
+  const fullText = "Psychology-driven strategy with flavor — because people don't change their minds, brands change them for them.";
+  let i = 0;
+  function typeWriter() {
+    if (i < fullText.length) {
+      typingText.textContent += fullText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 28);
+    }
+  }
+  setTimeout(typeWriter, 600);
 </script>
 
 </body>
