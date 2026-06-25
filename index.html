@@ -39,7 +39,8 @@
   .nav-links a:hover { color: var(--green-light); }
   .nav-resume { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); text-decoration: none; border: 1px solid var(--green); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; }
   .nav-resume:hover { background: var(--green); color: var(--white); }
-
+.nav-substack { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender-deep); text-decoration: none; border: 1px solid var(--lavender-deep); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; margin-right: 0.5rem; }
+  .nav-substack:hover { background: var(--lavender-deep); color: var(--white); }
   #hero { min-height: 100vh; background: linear-gradient(135deg, #C8D8EA 0%, #DDD0ED 100%); display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; padding: 8rem 4rem 6rem; position: relative; overflow: hidden; }
   #hero::before { content: ''; position: absolute; top: -150px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(155,133,181,0.15) 0%, transparent 70%); pointer-events: none; }
   .hero-content { display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 1; }
@@ -212,6 +213,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+<a class="nav-substack" href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener">Substack</a>
   <a class="nav-resume" href="assets/aaron-li-resume.pdf" download>Résumé</a>
 </nav>
 
@@ -224,6 +226,9 @@
       <a href="#about" class="hero-cta">Explore my work</a>
       <a href="assets/aaron-li-resume.pdf" download class="hero-cta">Download Résumé</a>
     </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <span></span>
   </div>
   <div class="hero-photo-wrap">
     <img class="hero-photo" src="assets/headshot.jpeg" alt="Aaron Li — Brand & Marketing Strategist" />
@@ -283,7 +288,7 @@
       </div>
     </div>
   </div>
-<div class="photo-accent photo-accent--navy" style="margin-top:3rem;">   <img src="assets/about-photo.jpg" alt="" aria-hidden="true" style="object-position: center 30%;"> </div> </section>
+<div class="photo-accent photo-accent--navy" style="margin-top:3rem; margin-left:-4rem; margin-right:-4rem; width:calc(100% + 8rem);">     <img src="assets/about-photo.jpg" alt="" aria-hidden="true" style="object-position: center 30%;">   </div> </section>
 
 <div class="botanical-divider" style="background:var(--navy); padding:2rem 0;">
   <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -326,8 +331,9 @@
           <ul class="exp-bullets">
             <li>Managed content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for a Japanese-inspired hospitality group with 85+ locations and 1M+ combined followers.</li>
             <li>Executed influencer outreach, partnership research, and community engagement initiatives across multiple restaurant concepts to drive audience growth and brand consistency.</li>
-            <li>Leveraged social analytics and trend research to optimize content cadence and performance; informed campaigns that generated 20M+ organic views, including a single post with 367K likes and 6K shares.</li>
+           <li>Leveraged social analytics and trend research to optimize content cadence and performance; informed campaigns that generated 20M+ organic views, including a single post with 367K likes and 6K shares.</li>
           </ul>
+          <button class="project-btn" onclick="openModal('jinya')" style="margin-top:1rem;">View My Work →</button>
         </div>
       </div>
       <div class="exp-item">
@@ -548,20 +554,12 @@
         </ul>
       </div>
       <div class="modal-outcome">↗ CEO-adopted cause-marketing campaign · $52.4M AUD EMV quantified · 1.5x location visibility lift</div>
-     <div style="margin-top:1.5rem;">
-  <p class="modal-section-label">Viral Content — Saijo Hand Roll (JINYA Sister Brand)</p>
-  <p style="font-size:0.85rem;color:#5a5a6a;margin-bottom:0.75rem;">Content I provided strategic direction for, contributing to 411K likes and 20M+ organic views.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.75rem;">
-    <img src="assets/Saijo%20Screenshot.png" alt="Viral Saijo post - 411K likes" style="width:100%;border-radius:2px;"/>
-    <img src="assets/Saijo%20Screenshot%202.png" alt="Viral Saijo post stats" style="width:100%;border-radius:2px;"/>
-  </div>
-</div> 
      <a href="assets/mmh-presentation.pdf" target="_blank" rel="noopener" class="modal-deck-btn">View Full Deck ↗</a>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-vn11" onclick="closeModalOnBg(event, 'vn11')">
+<div class="modal-overlay" id="modal-jinya" onclick="closeModalOnBg(event, 'jinya')">   <div class="modal">     <button class="modal-close" onclick="closeModal('jinya')">×</button>     <div class="modal-header">       <p class="modal-tag">Social Media Strategy · Content Direction · F&B</p>       <h2 class="modal-title">JINYA Holdings — Social Media Coordinator</h2>     </div>     <div class="modal-body">       <div class="modal-section">         <p class="modal-section-label">The Context</p>         <p>JINYA Holdings is a Japanese-inspired hospitality group operating 85+ locations across North America, with a combined digital audience of over 1 million followers across brands. I joined as Social Media Coordinator, managing content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for multiple restaurant concepts simultaneously.</p>       </div>       <div class="modal-section">         <p class="modal-section-label">What I Did</p>         <ul>           <li>Managed content strategy and creative direction across 4 platforms for a portfolio of Japanese-inspired restaurant brands</li>           <li>Executed influencer outreach and partnership research, coordinating content approvals cross-functionally including sign-off from executive leadership</li>           <li>Leveraged social analytics and trend research to optimize content cadence, posting strategy, and content mix</li>           <li>Coordinated community management and sponsored content review to maintain consistent brand identity across concepts</li>         </ul>       </div>       <div class="modal-section">         <p class="modal-section-label">Viral Content — Saijo Hand Roll</p>         <p style="font-size:0.85rem;color:#5a5a6a;margin-bottom:0.75rem;">Strategic direction I provided for content across JINYA's sister brand portfolio, contributing to 411K likes and 20M+ organic views.</p>         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.75rem;">           <img src="assets/Saijo%20Screenshot.png" alt="Viral Saijo post - 411K likes" style="width:100%;border-radius:2px;"/>           <img src="assets/Saijo%20Screenshot%202.png" alt="Viral Saijo post stats" style="width:100%;border-radius:2px;"/>         </div>       </div>       <div class="modal-outcome">↗ 20M+ organic views · 411K likes · 1M+ combined followers across brand portfolio</div>     </div>   </div> </div> onclick="closeModalOnBg(event, 'vn11')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('vn11')">×</button>
     <div class="modal-header">
@@ -694,7 +692,7 @@
   });
 // Typing animation
   const typingText = document.querySelector('.typing-text');
-  const fullText = "Psychology-driven strategy with flavor: Strategy rooted in how people think";
+  const fullText = "Psychology-driven strategy: Strategy rooted in how people think";
   let i = 0;
   function typeWriter() {
     if (i < fullText.length) {
