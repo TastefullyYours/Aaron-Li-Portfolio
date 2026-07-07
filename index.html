@@ -101,7 +101,7 @@
 .tagline-vine.grown ellipse:nth-of-type(3) { animation-delay: 0.9s; }
 .tagline-vine.grown ellipse:nth-of-type(4) { animation-delay: 1.3s; }
 @keyframes leafPop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
-.sidebar-headshot { width: 100%; height: 260px; object-fit: cover; object-position: center top; border-radius: 2px; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(30,48,85,0.15); } .about-greeting { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 300; color: var(--navy); line-height: 1.1; margin-bottom: 1.5rem; }
+.about-greeting-hero { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(3.5rem, 8vw, 6.5rem); color: var(--navy); line-height: 1; margin-bottom: 3rem; }
  .about-text::after { content: ''; display: table; clear: both; }
   @keyframes scrollLine {
     0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
@@ -144,24 +144,24 @@
   .about-photo-strip--bottom img:nth-child(2) { transform: rotate(-1.5deg); }
   .about-photo-strip--bottom img:nth-child(3) { transform: rotate(2deg); }
  .about-sidebar { padding-top: 0.5rem; }
-  .sidebar-headshot { width: 100%; height: 260px; object-fit: cover; object-position: center top; border-radius: 2px; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(30,48,85,0.15); }
+  .sidebar-headshot { width: 100%; height: 340px; object-fit: cover; object-position: center 15%; border-radius: 2px; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(30,48,85,0.15); }
   .sidebar-block { margin-bottom: 2.5rem; }
   .sidebar-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; border-bottom: 1px solid var(--green-pale); padding-bottom: 0.5rem; }
   .sidebar-block p, .sidebar-block li { font-size: 0.92rem; color: #4a4a5a; line-height: 1.7; }
   .sidebar-block ul { list-style: none; }
  .sidebar-block li::before { content: '—'; color: var(--green); margin-right: 0.5rem; font-size: 0.8rem; }
-.scrapbook { position: relative; width: 100vw; left: 50%; transform: translateX(-50%); padding: 6rem 3vw 8rem; overflow: visible; }
-  .scrapbook-inner { position: relative; max-width: 1400px; height: 420px; margin: 0 auto; }
-  .scrapbook-photo { position: absolute; object-fit: cover; border-radius: 2px; box-shadow: 0 20px 45px rgba(30,48,85,0.28); }
-  .scrapbook-photo--1 { left: -1%; top: 40px; width: 24%; height: 280px; transform: rotate(-5deg); z-index: 1; }
-  .scrapbook-photo--2 { left: 20%; top: 0; width: 26%; height: 340px; transform: rotate(3deg); z-index: 3; }
-  .scrapbook-photo--3 { left: 41%; top: 70px; width: 22%; height: 260px; transform: rotate(-3deg); z-index: 2; }
-  .scrapbook-photo--4 { left: 59%; top: 10px; width: 24%; height: 360px; transform: rotate(4deg); z-index: 4; }
-  .scrapbook-photo--5 { left: 79%; top: 80px; width: 21%; height: 250px; transform: rotate(-4deg); z-index: 1; }
+.scrapbook { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 6rem 4vw 8rem; overflow: visible; }
+  .scrapbook-inner { display: flex; align-items: center; justify-content: center; max-width: 1500px; margin: 0 auto; }
+  .scrapbook-photo { object-fit: cover; border-radius: 2px; box-shadow: 0 20px 45px rgba(30,48,85,0.28); flex: 0 0 auto; }
+  .scrapbook-photo--1 { width: 20%; height: 260px; transform: rotate(-5deg); margin-top: 60px; z-index: 1; }
+  .scrapbook-photo--2 { width: 23%; height: 330px; transform: rotate(3deg); margin-left: -3%; z-index: 3; }
+  .scrapbook-photo--3 { width: 19%; height: 240px; transform: rotate(-3deg); margin-left: -3%; margin-top: 90px; z-index: 2; }
+  .scrapbook-photo--4 { width: 21%; height: 340px; transform: rotate(4deg); margin-left: -3%; z-index: 4; }
+  .scrapbook-photo--5 { width: 18%; height: 230px; transform: rotate(-4deg); margin-left: -3%; margin-top: 100px; z-index: 1; }
   @media (max-width: 900px) {
     .scrapbook { padding: 3rem 0 4rem; }
-    .scrapbook-inner { height: auto; }
-    .scrapbook-photo { position: relative; left: auto !important; top: auto !important; width: 42% !important; height: 160px !important; display: inline-block; margin: 0.5rem 2%; }
+    .scrapbook-inner { flex-wrap: wrap; }
+    .scrapbook-photo { width: 42% !important; height: 160px !important; margin: 0.5rem 2% !important; }
   }
   #experience { background: var(--navy); max-width: 100%; padding: 6rem 0; }
   #experience > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
@@ -406,13 +406,13 @@
 
 <section id="about" class="fade-in">
  <p class="section-eyebrow">About</p>
+ <p class="about-greeting-hero">Hi! My name is Aaron,</p>
   <div class="about-grid">
    <div class="about-text">
-      <p class="about-greeting">Hi! My name is Aaron,</p>
       <p>Once upon a time I was the 10 year old behind the cash register at a Chinese restaurant, and now that kid's grown up into a Food and Beverage Marketer based out of Los Angeles! I'm graduating in December 2026 from USC with a MS in Marketing and a BA in Psychology.</p>
       <p>It's my psychological background that powers my marketing. I believe the average person doesn't always have the capacity to make mindful choices, and it's my job as a marketer to guide them to the decisions they want to make. That's why in school I studied consumer behavior, and in particular Identity-Based Motivation: the idea that people behave in accordance to the version of themselves they envision themselves to be. Currently, I'm at Tiffany &amp; Co., building Gen Z strategy for a legacy brand built almost entirely on ritual and meaning.</p>
       <p>I will always love the food space, because it's a place built around people, and more importantly communities. I love this space because it tells stories, and a good story is always something people can see themselves in. I'm building my skills toward strategy and marketing roles. I'm a lifelong learner, and I hope to grow with you! Whether that's in professional acumen, refining my expertise in how people think, or sharing/trying out each other's recipes :).</p>
-    <p>I also write food essays on the side. <a href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" style="color: var(--green); text-decoration: underline;">Read Tastefully Yours →</a></p>
+      <p>I also write food essays on the side. <a href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" style="color: var(--green); text-decoration: underline;">Read Tastefully Yours →</a></p>
     </div>
     <div class="about-sidebar">
       <img class="sidebar-headshot" src="assets/headshot.jpeg" alt="Aaron Li" />
@@ -446,7 +446,7 @@
       </div>
     </div>
   </div>
-</section>  
+</section>
 
 <div class="scrapbook fade-in">
   <div class="scrapbook-inner">
