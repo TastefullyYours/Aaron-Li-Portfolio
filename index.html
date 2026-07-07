@@ -123,7 +123,9 @@
   .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(45,90,61,0.12); }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--green); z-index: 2; }
   .project-card--wide { grid-column: span 3; }
-  .project-card-body { padding: 2.2rem; flex: 1; display: flex; flex-direction: column; }
+  .project-card-img { width: 100%; height: 180px; object-fit: cover; display: block; border-bottom: 1px solid var(--mist); }
+ .project-card--wide .project-card-img { height: 220px; }
+ .project-card-body { padding: 2.2rem; flex: 1; display: flex; flex-direction: column; }
   .project-tag { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.8rem; }
   .project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--navy); line-height: 1.3; margin-bottom: 1rem; }
   .project-body { font-size: 0.88rem; color: #5a5a6a; line-height: 1.75; margin-bottom: 1rem; flex: 1; }
@@ -473,7 +475,8 @@
   <p class="section-eyebrow">Projects</p>
   <h2 class="section-title">Selected work</h2>
   <div class="projects-grid">
-    <div class="project-card fade-in">
+   <div class="project-card fade-in">
+      <img class="project-card-img" src="assets/MMH%20logo.png" alt="Make Me Hungry" style="object-fit:contain;padding:1.5rem;background:var(--white);"/>
       <div class="project-card-body">
         <p class="project-tag">PR Strategy · Cause Marketing</p>
         <h3 class="project-title">Make Me Hungry — PR Coordinator</h3>
@@ -482,7 +485,8 @@
         <button class="project-btn" onclick="openModal('mmh')">View My Work →</button>
       </div>
     </div>
-    <div class="project-card fade-in">
+<div class="project-card fade-in">
+      <img class="project-card-img" src="assets/11vnshirt.png" alt="11VN11"/>
       <div class="project-card-body">
         <p class="project-tag">Brand Strategy · Social Media</p>
         <h3 class="project-title">11VN11 — Brand & Growth Strategy</h3>
@@ -491,7 +495,8 @@
         <button class="project-btn" onclick="openModal('vn11')">View My Work →</button>
       </div>
     </div>
-    <div class="project-card fade-in">
+<div class="project-card fade-in">
+      <img class="project-card-img" src="assets/Bon2%20Image.jpg" alt="Break On 2"/>
       <div class="project-card-body">
         <p class="project-tag">Revenue Strategy</p>
         <h3 class="project-title">Break On 2: Latin Fusion — Growth Plan</h3>
@@ -500,7 +505,8 @@
         <button class="project-btn" onclick="openModal('bo2')">View My Work →</button>
       </div>
     </div>
-    <div class="project-card project-card--wide fade-in">
+<div class="project-card project-card--wide fade-in">
+      <img class="project-card-img" src="assets/spoonsforsupportSS.png" alt="Spoons for Support"/>
       <div class="project-card-body">
         <p class="project-tag">Behavioral Research · USC Dornsife · Cause Marketing</p>
         <h3 class="project-title">Identity-Based Motivation & Spoons for Support</h3>
