@@ -101,9 +101,9 @@
 .tagline-vine.grown ellipse:nth-of-type(3) { animation-delay: 0.9s; }
 .tagline-vine.grown ellipse:nth-of-type(4) { animation-delay: 1.3s; }
 @keyframes leafPop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
-.about-headshot { width: 220px; height: 280px; object-fit: cover; object-position: center top; border-radius: 2px; float: left; margin: 0 2rem 1rem 0; box-shadow: 0 12px 32px rgba(30,48,85,0.12); }
-.about-greeting { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2.4rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem; }
-.about-text::after { content: ''; display: table; clear: both; }
+.about-headshot { width: 320px; height: 400px; object-fit: cover; object-position: center top; border-radius: 2px; float: right; margin: 0 0 1.5rem 2.5rem; box-shadow: 0 12px 32px rgba(30,48,85,0.12); }
+ .about-greeting { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 300; color: var(--navy); line-height: 1.1; margin-bottom: 1.5rem; }
+ .about-text::after { content: ''; display: table; clear: both; }
   @keyframes scrollLine {
     0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
     50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
@@ -134,16 +134,16 @@
   .about-text p:last-child { margin-bottom: 0; }
  .about-text p { font-size: 1.05rem; line-height: 1.85; color: #3a3a4a; margin-bottom: 1.4rem; }
   .about-text p:last-child { margin-bottom: 0; }
-  .about-photo-strip { display: flex; gap: 1rem; margin-top: 1.5rem; }
-  .about-photo-strip--top img { width: 150px; height: 150px; }
-  .about-photo-strip--bottom { margin-top: 1rem; }
-  .about-photo-strip--bottom img { width: 120px; height: 120px; }
+  .about-photo-strip { display: flex; gap: 1.25rem; margin-top: 2rem; clear: both; }
+  .about-photo-strip--top img { width: 220px; height: 220px; }
+  .about-photo-strip--bottom { margin-top: 1.25rem; }
+  .about-photo-strip--bottom img { width: 160px; height: 160px; }
   .about-photo-strip img { object-fit: cover; border-radius: 2px; box-shadow: 0 8px 20px rgba(30,48,85,0.15); }
-  .about-photo-strip--top img:nth-child(1) { transform: rotate(-3deg); }
-  .about-photo-strip--top img:nth-child(2) { transform: rotate(2deg); margin-top: 10px; }
-  .about-photo-strip--bottom img:nth-child(1) { transform: rotate(2deg); }
-  .about-photo-strip--bottom img:nth-child(2) { transform: rotate(-2deg); margin-top: 8px; }
-  .about-photo-strip--bottom img:nth-child(3) { transform: rotate(3deg); }
+  .about-photo-strip--top img:nth-child(1) { transform: rotate(-2deg); }
+  .about-photo-strip--top img:nth-child(2) { transform: rotate(1.5deg); }
+  .about-photo-strip--bottom img:nth-child(1) { transform: rotate(1.5deg); }
+  .about-photo-strip--bottom img:nth-child(2) { transform: rotate(-1.5deg); }
+  .about-photo-strip--bottom img:nth-child(3) { transform: rotate(2deg); }
   .about-sidebar { padding-top: 0.5rem; }
   .sidebar-block { margin-bottom: 2.5rem; }
   .sidebar-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; border-bottom: 1px solid var(--green-pale); padding-bottom: 0.5rem; }
@@ -394,7 +394,6 @@
 
 <section id="about" class="fade-in">
  <p class="section-eyebrow">About</p>
-  <h2 class="section-title">Strategy rooted<br>in how people think</h2>
   <div class="about-grid">
     <div class="about-text">
       <img class="about-headshot" src="assets/headshot.jpeg" alt="Aaron Li" />
