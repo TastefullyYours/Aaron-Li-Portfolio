@@ -41,7 +41,7 @@
   .nav-resume:hover { background: var(--green); color: var(--white); }
 .nav-substack { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender-deep); text-decoration: none; border: 1px solid var(--lavender-deep); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; margin-right: 0.5rem; }
   .nav-substack:hover { background: var(--lavender-deep); color: var(--white); }
-#hero { min-height: 100vh; background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; padding: 8rem 4rem 6rem; position: relative; overflow: hidden; }
+#hero { min-height: 100vh; background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 5rem; align-items: center; padding: 8rem 4rem 6rem; position: relative; overflow: hidden; }
   #hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(155,133,181,0.35) 0%, transparent 65%); pointer-events: none; z-index: 0; }
   #hero::after { content: ''; position: absolute; bottom: -250px; left: -200px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(90,158,111,0.28) 0%, transparent 65%); pointer-events: none; z-index: 0; }
   .hero-botanical { position: absolute; pointer-events: none; z-index: 0; opacity: 0.9; }
@@ -83,7 +83,27 @@
     background: linear-gradient(to bottom, var(--green), transparent);
     animation: scrollLine 1.8s ease-in-out infinite;
   }
-
+.hero-content--centered { align-items: center; }
+.hero-name-big { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(4.5rem, 11vw, 9rem); line-height: 0.95; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.hero-subtitle { font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
+.hero-tagline-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--blue); max-width: 600px; margin: 0 auto 3rem; }
+ .tagline-wrap { position: relative; margin-bottom: 3rem; }
+.hero-tagline-text { margin-bottom: 0.5rem; clip-path: inset(0 100% 0 0); }
+.hero-tagline-text.grown { animation: taglineReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes taglineReveal { to { clip-path: inset(0 0% 0 0); } }
+.tagline-vine { width: min(400px, 80vw); height: 20px; display: block; margin: 0 auto; opacity: 0.7; }
+.tagline-vine path { stroke-dasharray: 500; stroke-dashoffset: 500; }
+.tagline-vine.grown path { animation: vineGrow 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes vineGrow { to { stroke-dashoffset: 0; } }
+.tagline-vine ellipse { opacity: 0; transform-origin: center; }
+.tagline-vine.grown ellipse { animation: leafPop 0.5s ease forwards; }
+.tagline-vine.grown ellipse:nth-of-type(2) { animation-delay: 0.5s; }
+.tagline-vine.grown ellipse:nth-of-type(3) { animation-delay: 0.9s; }
+.tagline-vine.grown ellipse:nth-of-type(4) { animation-delay: 1.3s; }
+@keyframes leafPop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+.about-headshot { width: 220px; height: 280px; object-fit: cover; object-position: center top; border-radius: 2px; float: left; margin: 0 2rem 1rem 0; box-shadow: 0 12px 32px rgba(30,48,85,0.12); }
+.about-greeting { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2.4rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem; }
+.about-text::after { content: ''; display: table; clear: both; }
   @keyframes scrollLine {
     0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
     50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
@@ -306,21 +326,26 @@
     </g>
     <circle cx="90" cy="90" r="12" fill="#9B85B5" opacity="0.5"/>
   </svg>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Marketing Strategy · Brand · PR</p>
-    <h1 class="hero-name">Aaron<span>Li</span></h1>
-<p class="hero-tagline"><span class="typing-text"></span></p>
-    <div class="hero-ctas">
-      <a href="#about" class="hero-cta">Explore my work</a>
-      <a href="assets/aaron-li-resume.pdf" download class="hero-cta">Download Résumé</a>
-    </div>
+<div class="hero-content hero-content--centered">
+  <h1 class="hero-name-big">Aaron Li</h1>
+  <p class="hero-subtitle">Marketing Portfolio</p>
+ <div class="tagline-wrap">
+  <p class="hero-tagline-text" id="tagline">Marketing Strategy · Consumer Psychology · Food &amp; Beverage</p>
+  <svg class="tagline-vine" viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
+    <path class="vine-path" d="M5 12 Q50 4 100 12 T200 10 T300 12 T395 8" stroke="#5A9E6F" stroke-width="1.5" fill="none"/>
+    <ellipse cx="100" cy="12" rx="5" ry="2.5" fill="#5A9E6F" transform="rotate(-15 100 12)"/>
+    <ellipse cx="200" cy="10" rx="5" ry="2.5" fill="#3D7A52" transform="rotate(15 200 10)"/>
+    <ellipse cx="300" cy="12" rx="5" ry="2.5" fill="#5A9E6F" transform="rotate(-15 300 12)"/>
+  </svg>
+</div>
+  <div class="hero-ctas">
+    <a href="#about" class="hero-cta">Explore my work</a>
+    <a href="assets/aaron-li-resume.pdf" download class="hero-cta">Download Résumé</a>
   </div>
-  <div class="hero-scroll-indicator">
-    <span></span>
-  </div>
-  <div class="hero-photo-wrap">
-    <img class="hero-photo" src="assets/headshot.jpeg" alt="Aaron Li — Brand & Marketing Strategist" />
-  </div>
+</div>
+<div class="hero-scroll-indicator">
+  <span></span>
+</div>
 </section>
 <div class="botanical-divider" style="background:var(--white); padding:2.5rem 0;">
   <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -360,10 +385,12 @@
   <h2 class="section-title">Strategy rooted<br>in how people think</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>I became a marketer because people don't always have the bandwidth to make better decisions on their own. My background is in Psychology, specifically in how choice architecture and behavioral insight can nudge decision-making toward more sustainable, more intentional outcomes.</p>
-      <p>Individual behavior change is slow, and grassroots efforts are hard to build. Top-down change is easier, especially with the influence of branding. So I got a marketing degree, to shift how millions of people eat, shop, and live. I want to change minds by changing the brands they trust.</p>
-      <p>That philosophy has shaped every role I've taken. I'm in food and hospitality because food is a universal language. I'm now at Tiffany & Co. because they've proven that a luxury brand can lead on sustainable values, "setting" an example for other brands, and I wanted to learn how that's done from the inside.</p>
-      <p>I'm building toward senior marketing strategy and brand roles with consumer brands that take their influence seriously.</p>
+      <img class="about-headshot" src="assets/headshot.jpeg" alt="Aaron Li" />
+      <p class="about-greeting">Hi! My name is Aaron,</p>
+      <p>Once upon a time I was the 10 year old behind the cash register at a Chinese restaurant, and now that kid's grown up into a Food and Beverage Marketer based out of Los Angeles! I'm graduating in December 2026 from USC with a MS in Marketing and a BA in Psychology.</p>
+      <p>It's my psychological background that powers my marketing. I believe the average person doesn't always have the capacity to make mindful choices, and it's my job as a marketer to guide them to the decisions they want to make. That's why in school I studied consumer behavior, and in particular Identity-Based Motivation: the idea that people behave in accordance to the version of themselves they envision themselves to be. Currently, I'm at Tiffany &amp; Co., building Gen Z strategy for a legacy brand built almost entirely on ritual and meaning.</p>
+      <p>I will always love the food space, because it's a place built around people, and more importantly communities. I love this space because it tells stories, and a good story is always something people can see themselves in. I'm building my skills toward strategy and marketing roles. I'm a lifelong learner, and I hope to grow with you! Whether that's in professional acumen, refining my expertise in how people think, or sharing/trying out each other's recipes :).</p>
+      <p>I also write food essays on the side. <a href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" style="color: var(--green); text-decoration: underline;">Read Tastefully Yours →</a></p>
     </div>
     <div class="about-sidebar">
       <div class="sidebar-block">
@@ -850,19 +877,13 @@
       document.body.style.overflow = '';
     }
   });
-// Typing animation
-  const typingText = document.querySelector('.typing-text');
-  const fullText = "Psychology-driven strategy: Strategy rooted in how people think";
-  let i = 0;
-  function typeWriter() {
-    if (i < fullText.length) {
-      typingText.textContent += fullText.charAt(i);
-      i++;
-      setTimeout(typeWriter, 28);
-    }
-  }
-  setTimeout(typeWriter, 600);
 
+// Tagline vine-grow animation
+  setTimeout(function() {
+    document.getElementById('tagline').classList.add('grown');
+    document.querySelector('.tagline-vine').classList.add('grown');
+  }, 600);
+ 
   // Fade-in on scroll
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver((entries) => {
