@@ -41,9 +41,19 @@
   .nav-resume:hover { background: var(--green); color: var(--white); }
 .nav-substack { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender-deep); text-decoration: none; border: 1px solid var(--lavender-deep); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; margin-right: 0.5rem; }
   .nav-substack:hover { background: var(--lavender-deep); color: var(--white); }
-  #hero { min-height: 100vh; background: linear-gradient(135deg, #C8D8EA 0%, #DDD0ED 100%); display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; padding: 8rem 4rem 6rem; position: relative; overflow: hidden; }
-  #hero::before { content: ''; position: absolute; top: -150px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(155,133,181,0.15) 0%, transparent 70%); pointer-events: none; }
-  .hero-content { display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 1; }
+#hero { min-height: 100vh; background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; padding: 8rem 4rem 6rem; position: relative; overflow: hidden; }
+  #hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(155,133,181,0.35) 0%, transparent 65%); pointer-events: none; z-index: 0; }
+  #hero::after { content: ''; position: absolute; bottom: -250px; left: -200px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(90,158,111,0.28) 0%, transparent 65%); pointer-events: none; z-index: 0; }
+  .hero-botanical { position: absolute; pointer-events: none; z-index: 0; opacity: 0.9; }
+  .hero-botanical--tl { top: -40px; left: -40px; width: 340px; transform: rotate(8deg); }
+  .hero-botanical--br { bottom: -60px; right: -30px; width: 400px; transform: rotate(-6deg); }
+  .hero-botanical--mid { top: 40%; right: 32%; width: 180px; opacity: 0.5; }
+  @media (max-width: 900px) {
+    .hero-botanical--tl { width: 200px; }
+    .hero-botanical--br { width: 240px; }
+    .hero-botanical--mid { display: none; }
+  }
+ .hero-content { display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 1; }
   .hero-photo-wrap { position: relative; flex-shrink: 0; z-index: 1; }
   .hero-photo { width: 300px; height: 380px; object-fit: cover; object-position: center top; border-radius: 2px; display: block; box-shadow: 0 24px 64px rgba(30,48,85,0.16), 0 0 0 1px rgba(45,90,61,0.3); }
   .hero-photo-wrap::after { content: ''; position: absolute; top: 14px; left: 14px; right: -14px; bottom: -14px; border: 1px solid var(--green-light); z-index: -1; border-radius: 2px; }
@@ -264,6 +274,38 @@
 </nav>
 
 <section id="hero">
+  <svg class="hero-botanical hero-botanical--tl" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M60 260 Q70 160 130 90 Q180 30 250 20" stroke="#3D7A52" stroke-width="4" fill="none" opacity="0.7"/>
+    <ellipse cx="120" cy="120" rx="42" ry="20" fill="#5A9E6F" opacity="0.75" transform="rotate(-35 120 120)"/>
+    <ellipse cx="165" cy="80" rx="38" ry="18" fill="#3D7A52" opacity="0.7" transform="rotate(-45 165 80)"/>
+    <ellipse cx="90" cy="175" rx="36" ry="17" fill="#5A9E6F" opacity="0.65" transform="rotate(-25 90 175)"/>
+    <circle cx="215" cy="45" r="22" fill="#9B85B5" opacity="0.8"/>
+    <circle cx="245" cy="70" r="15" fill="#C5B4D6" opacity="0.85"/>
+    <circle cx="200" cy="80" r="12" fill="#9B85B5" opacity="0.7"/>
+    <ellipse cx="150" cy="150" rx="30" ry="14" fill="#3D7A52" opacity="0.6" transform="rotate(20 150 150)"/>
+  </svg>
+  <svg class="hero-botanical hero-botanical--br" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M360 40 Q300 120 220 170 Q140 220 40 240" stroke="#3D7A52" stroke-width="4" fill="none" opacity="0.7"/>
+    <ellipse cx="280" cy="120" rx="50" ry="24" fill="#5A9E6F" opacity="0.75" transform="rotate(30 280 120)"/>
+    <ellipse cx="220" cy="165" rx="44" ry="21" fill="#3D7A52" opacity="0.7" transform="rotate(20 220 165)"/>
+    <ellipse cx="320" cy="80" rx="40" ry="19" fill="#5A9E6F" opacity="0.65" transform="rotate(40 320 80)"/>
+    <circle cx="90" cy="220" r="26" fill="#9B85B5" opacity="0.8"/>
+    <circle cx="130" cy="235" r="17" fill="#C5B4D6" opacity="0.85"/>
+    <circle cx="60" cy="200" r="14" fill="#9B85B5" opacity="0.7"/>
+    <circle cx="155" cy="205" r="12" fill="#C5B4D6" opacity="0.75"/>
+    <ellipse cx="170" cy="195" rx="34" ry="16" fill="#3D7A52" opacity="0.55" transform="rotate(-15 170 195)"/>
+  </svg>
+  <svg class="hero-botanical hero-botanical--mid" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="90" cy="90" r="40" fill="#C5B4D6" opacity="0.45"/>
+    <circle cx="90" cy="90" r="40" fill="none" stroke="#9B85B5" stroke-width="3" opacity="0.6"/>
+    <g stroke="#9B85B5" stroke-width="2" opacity="0.5">
+      <line x1="90" y1="55" x2="90" y2="125"/>
+      <line x1="55" y1="90" x2="125" y2="90"/>
+      <line x1="65" y1="65" x2="115" y2="115"/>
+      <line x1="65" y1="115" x2="115" y2="65"/>
+    </g>
+    <circle cx="90" cy="90" r="12" fill="#9B85B5" opacity="0.5"/>
+  </svg>
   <div class="hero-content">
     <p class="hero-eyebrow">Marketing Strategy · Brand · PR</p>
     <h1 class="hero-name">Aaron<span>Li</span></h1>
@@ -314,8 +356,8 @@
 </div>
 
 <section id="about" class="fade-in">
-  <p class="section-eyebrow section-head-offset">About</p>
-  <h2 class="section-title section-head-offset section-title--accent">Strategy rooted<br>in how people think</h2>
+ <p class="section-eyebrow">About</p>
+  <h2 class="section-title">Strategy rooted<br>in how people think</h2>
   <div class="about-grid">
     <div class="about-text">
       <p>I became a marketer because people don't always have the bandwidth to make better decisions on their own. My background is in Psychology, specifically in how choice architecture and behavioral insight can nudge decision-making toward more sustainable, more intentional outcomes.</p>
