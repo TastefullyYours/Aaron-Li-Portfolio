@@ -83,6 +83,20 @@
     background: linear-gradient(to bottom, var(--green), transparent);
     animation: scrollLine 1.8s ease-in-out infinite;
   }
+ .hero-photo-scatter { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.hero-photo { position: absolute; object-fit: cover; border-radius: 2px; box-shadow: 0 16px 36px rgba(30,48,85,0.25); }
+.hero-photo--1 { left: 6%; top: 14%; width: 190px; height: 230px; transform: rotate(-6deg); }
+.hero-photo--2 { right: 7%; top: 10%; width: 170px; height: 210px; transform: rotate(4deg); }
+.hero-photo--3 { left: 4%; bottom: 10%; width: 160px; height: 200px; transform: rotate(5deg); }
+.hero-photo--4 { right: 5%; bottom: 8%; width: 180px; height: 220px; transform: rotate(-4deg); }
+.hero-photo--5 { left: 50%; bottom: 4%; width: 140px; height: 170px; transform: translateX(-50%) rotate(-2deg); }
+.hero-content--centered { position: relative; z-index: 3; }
+@media (max-width: 1100px) {
+  .hero-photo--1, .hero-photo--2, .hero-photo--3, .hero-photo--4 { width: 130px; height: 160px; }
+}
+@media (max-width: 900px) {
+  .hero-photo-scatter { display: none; }
+}
 .hero-content--centered { align-items: center; }
 .hero-name-big { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(4.5rem, 11vw, 9rem); line-height: 0.95; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
 .hero-subtitle { font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
@@ -192,8 +206,10 @@
   .project-body { font-size: 0.88rem; color: #5a5a6a; line-height: 1.75; margin-bottom: 1rem; flex: 1; }
   .project-outcome { font-size: 0.8rem; color: var(--green); font-weight: 500; letter-spacing: 0.03em; margin-bottom: 1.25rem; }
   .project-outcome::before { content: '↗ '; color: var(--green-light); }
-  .project-btn { display: inline-block; padding: 0.55rem 1.4rem; border: 1px solid var(--green); color: var(--green); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; background: transparent; font-family: 'DM Sans', sans-serif; transition: all 0.2s; align-self: flex-start; }
+.project-btn { display: inline-block; padding: 0.55rem 1.4rem; border: 1px solid var(--green); color: var(--green); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; background: transparent; font-family: 'DM Sans', sans-serif; transition: all 0.2s; align-self: flex-start; }
   .project-btn:hover { background: var(--green); color: var(--white); }
+  #experience .project-btn { border-color: var(--lavender); color: var(--lavender); }
+  #experience .project-btn:hover { background: var(--lavender); color: var(--navy); }
 
   .modal-overlay { position: fixed; inset: 0; background: rgba(20,30,50,0.75); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
   .modal-overlay.active { opacity: 1; pointer-events: all; }
@@ -348,11 +364,18 @@
       <line x1="65" y1="65" x2="115" y2="115"/>
       <line x1="65" y1="115" x2="115" y2="65"/>
     </g>
-    <circle cx="90" cy="90" r="12" fill="#9B85B5" opacity="0.5"/>
+<circle cx="90" cy="90" r="12" fill="#9B85B5" opacity="0.5"/>
   </svg>
+  <div class="hero-photo-scatter">
+    <img src="assets/pride.jpg" alt="" aria-hidden="true" class="hero-photo hero-photo--1" />
+    <img src="assets/ramen.jpg" alt="" aria-hidden="true" class="hero-photo hero-photo--2" />
+    <img src="assets/liquor-store.jpg" alt="" aria-hidden="true" class="hero-photo hero-photo--3" />
+    <img src="assets/boba.jpg" alt="" aria-hidden="true" class="hero-photo hero-photo--4" />
+    <img src="assets/grad-2.jpg" alt="" aria-hidden="true" class="hero-photo hero-photo--5" />
+  </div>
 <div class="hero-content hero-content--centered">
-  <h1 class="hero-name-big">Aaron Li</h1>
   <p class="hero-subtitle">Marketing Portfolio</p>
+  <h1 class="hero-name-big">Aaron Li</h1>
  <div class="tagline-wrap">
   <p class="hero-tagline-text" id="tagline">Marketing Strategy · Consumer Psychology · Food &amp; Beverage</p>
   <svg class="tagline-vine" viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
@@ -768,13 +791,45 @@
       </div>
       <div class="modal-outcome">↗ CEO-adopted cause-marketing campaign · $52.4M AUD EMV quantified · 1.5x location visibility lift</div>
      <a href="assets/mmh-presentation.pdf" target="_blank" rel="noopener" class="modal-deck-btn">View Full Deck ↗</a>
+     <a href="https://drive.google.com/file/d/1DafpNC4fii7zhDDeDAwS3Xg0XEZlpSlr/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn" style="margin-left:0.75rem;">View Press Guest List ↗</a>
+     <a href="https://drive.google.com/file/d/16UeqLt7suhM0zoEg0pu1e1pSZPhHhZeU/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn" style="margin-left:0.75rem;">View My Work ↗</a>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-jinya" onclick="closeModalOnBg(event, 'jinya')">   <div class="modal">     <button class="modal-close" onclick="closeModal('jinya')">×</button>     <div class="modal-header">       <p class="modal-tag">Social Media Strategy · Content Direction · F&B</p>       <h2 class="modal-title">JINYA Holdings — Social Media Coordinator</h2>     </div>     <div class="modal-body">       <div class="modal-section">         <p class="modal-section-label">The Context</p>         <p>JINYA Holdings is a Japanese-inspired hospitality group operating 85+ locations across North America, with a combined digital audience of over 1 million followers across brands. I joined as Social Media Coordinator, managing content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for multiple restaurant concepts simultaneously.</p>       </div>       <div class="modal-section">         <p class="modal-section-label">What I Did</p>         <ul>           <li>Managed content strategy and creative direction across 4 platforms for a portfolio of Japanese-inspired restaurant brands</li>           <li>Executed influencer outreach and partnership research, coordinating content approvals cross-functionally including sign-off from executive leadership</li>           <li>Leveraged social analytics and trend research to optimize content cadence, posting strategy, and content mix</li>           <li>Built monthly content calendars and a multi-pillar LinkedIn content strategy spanning seasonal, culture, industry, and awards-focused posts across the brand portfolio</li>           <li>Built monthly content calendars and a multi-pillar LinkedIn content strategy spanning seasonal, culture, industry, and awards-focused posts across the brand portfolio</li>           <li>Coordinated community management and sponsored content review to maintain consistent brand identity across concepts</li>         </ul>       </div>       <div class="modal-section">         <p class="modal-section-label">Viral Content — Saijo Hand Roll</p>         <p style="font-size:0.85rem;color:#5a5a6a;margin-bottom:0.75rem;">Strategic direction I provided for content across JINYA's sister brand portfolio, contributing to 411K likes and 20M+ organic views.</p>         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.75rem;">           <img src="assets/Saijo%20Screenshot.png" alt="Viral Saijo post - 411K likes" style="width:100%;border-radius:2px;"/>           <img src="assets/Saijo%20Screenshot%202.png" alt="Viral Saijo post stats" style="width:100%;border-radius:2px;"/>         </div>       </div>       <div class="modal-outcome">↗ 20M+ organic views · 411K likes · 1M+ combined followers across brand portfolio</div>
- <a href="https://drive.google.com/file/d/1ghs1KBPwtMnfslKEEv5O78bpDJ9vBbzY/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn">View LinkedIn Strategy ↗</a>
-<a href="https://drive.google.com/file/d/1K3-EjXpo4yvxvJkWpteryoJtkuhtY1JC/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn" style="margin-left:0.75rem;">View Transition Doc ↗</a>
+<div class="modal-overlay" id="modal-jinya" onclick="closeModalOnBg(event, 'jinya')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('jinya')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">Social Media Strategy · Content Direction · F&B</p>
+      <h2 class="modal-title">JINYA Holdings — Social Media Coordinator</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Context</p>
+        <p>JINYA Holdings is a Japanese-inspired hospitality group operating 85+ locations across North America, with a combined digital audience of over 1 million followers across brands. I joined as Social Media Coordinator, managing content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for multiple restaurant concepts simultaneously.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">What I Did</p>
+        <ul>
+          <li>Managed content strategy and creative direction across 4 platforms for a portfolio of Japanese-inspired restaurant brands</li>
+          <li>Executed influencer outreach and partnership research, coordinating content approvals cross-functionally including sign-off from executive leadership</li>
+          <li>Leveraged social analytics and trend research to optimize content cadence, posting strategy, and content mix</li>
+          <li>Built monthly content calendars and a multi-pillar LinkedIn content strategy spanning seasonal, culture, industry, and awards-focused posts across the brand portfolio</li>
+          <li>Coordinated community management and sponsored content review to maintain consistent brand identity across concepts</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Viral Content — Saijo Hand Roll</p>
+        <p style="font-size:0.85rem;color:#5a5a6a;margin-bottom:0.75rem;">Strategic direction I provided for content across JINYA's sister brand portfolio, contributing to 411K likes and 20M+ organic views.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.75rem;">
+          <img src="assets/Saijo%20Screenshot.png" alt="Viral Saijo post - 411K likes" style="width:100%;border-radius:2px;"/>
+          <img src="assets/Saijo%20Screenshot%202.png" alt="Viral Saijo post stats" style="width:100%;border-radius:2px;"/>
+        </div>
+      </div>
+      <div class="modal-outcome">↗ 20M+ organic views · 411K likes · 1M+ combined followers across brand portfolio</div>
+      <a href="https://drive.google.com/file/d/1ghs1KBPwtMnfslKEEv5O78bpDJ9vBbzY/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn">View LinkedIn Strategy ↗</a>
+      <a href="https://drive.google.com/file/d/1K3-EjXpo4yvxvJkWpteryoJtkuhtY1JC/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn" style="margin-left:0.75rem;">View Transition Doc ↗</a>
     </div>
   </div>
 </div>
