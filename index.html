@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aaron Li — Brand & Marketing Strategist</title>
+<meta name="description" content="Marketing strategy, consumer psychology, and food &amp; beverage. USC Marshall MS Marketing, 2026.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aaron Li — Brand &amp; Marketing Strategist">
+<meta property="og:description" content="Marketing strategy, consumer psychology, and food &amp; beverage. USC Marshall MS Marketing, 2026.">
+<meta property="og:url" content="https://tastefullyyours.github.io/Aaron-Li-Portfolio/">
+<meta property="og:image" content="https://tastefullyyours.github.io/Aaron-Li-Portfolio/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -236,6 +245,15 @@
   .modal-deck-btn { display: inline-block; margin-top: 1.25rem; padding: 0.6rem 1.5rem; border: 1px solid var(--green); color: var(--green); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
   .modal-deck-btn:hover { background: var(--green); color: var(--white); }
 
+  .brand-strip { background: var(--white); text-align: center; padding: 2.5rem 1.5rem 0.5rem; }
+  .brand-strip-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); margin-bottom: 0.9rem; }
+  .brand-strip-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 3rem; }
+  .brand-strip-list li { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.2vw, 1.6rem); color: var(--navy); letter-spacing: 0.04em; }
+
+  .writing-band { margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; background: var(--sky); border: 1px solid var(--mist); border-left: 3px solid var(--lavender-deep); padding: 2rem 2.2rem; }
+  .writing-band .project-body { margin-bottom: 0; }
+  .writing-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 0.4rem; }
+
   #skills { background: var(--mist); max-width: 100%; padding: 6rem 0; }
   #skills > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
   .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-bottom: 4rem; }
@@ -387,6 +405,15 @@
   </div>
 </div>
 </section>
+<div class="brand-strip">
+  <p class="brand-strip-label">Where I've worked</p>
+  <ul class="brand-strip-list">
+    <li>Tiffany &amp; Co.</li>
+    <li>JINYA Holdings</li>
+    <li>Make Me Hungry</li>
+    <li>USC</li>
+  </ul>
+</div>
 <div class="botanical-divider" style="background:var(--white); padding:0.5rem 0;">
   <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M50 40 Q150 20 300 40 Q450 60 550 40" stroke="#9B85B5" stroke-width="1.2" fill="none" opacity="0.6"/>
@@ -597,11 +624,21 @@
   <p class="section-eyebrow">Projects</p>
   <h2 class="section-title">Selected work</h2>
   <div class="projects-grid">
+    <div class="project-card project-card--wide fade-in">
+      <img class="project-card-img" src="assets/cafe.jpg" alt="Tiffany Blue Box Cafe" style="object-position: center 18%;"/>
+      <div class="project-card-body">
+        <p class="project-tag">Gen Z Strategy · Consumer Behavior · Luxury Retail</p>
+        <h3 class="project-title">Tiffany &amp; Co. — Gen Z Engagement Strategy</h3>
+        <p class="project-body">A strategic recommendation presented to senior leadership on Gen Z client attraction and retention, applying consumer behavior research to design a "Creating Communities" in-store engagement framework.</p>
+        <p class="project-outcome">Presented to senior leadership · "Creating Communities" framework</p>
+        <a href="https://drive.google.com/file/d/1E3TSMr_qZFbNATzAarmjoaXqPwAXcsRC/view?usp=sharing" target="_blank" rel="noopener" class="project-btn" style="text-decoration:none;">View Full Deck →</a>
+      </div>
+    </div>
    <div class="project-card fade-in">
       <img class="project-card-img" src="assets/MMH%20logo.png" alt="Make Me Hungry"/>
       <div class="project-card-body">
         <p class="project-tag">PR Strategy · Cause Marketing</p>
-        <h3 class="project-title">Make Me Hungry — PR Coordinator</h3>
+        <h3 class="project-title">Make Me Hungry — PR Account Coordinator</h3>
         <p class="project-body">A boutique F&B PR agency in LA. Pitched, ghostwrote, and executed earned media and brand activation work across a portfolio of hospitality clients — including a cause-marketing concept that was adopted by a CEO and executed as a full campaign.</p>
         <p class="project-outcome">CEO-adopted campaign · <span data-target="4+">4</span>-client PR portfolio · Lupus Awareness activation</p>
         <button class="project-btn" onclick="openModal('mmh')">View My Work →</button>
@@ -637,6 +674,14 @@
         <button class="project-btn" onclick="openModal('ibm')">View My Work →</button>
       </div>
     </div>
+  </div>
+  <div class="writing-band fade-in">
+    <div>
+      <p class="project-tag">Writing Samples</p>
+      <h3 class="writing-title">Tastefully Yours</h3>
+      <p class="project-body">The food essays I write on Substack.</p>
+    </div>
+    <a href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" class="project-btn" style="text-decoration:none;align-self:center;">Read on Substack →</a>
   </div>
 </section>
 
@@ -751,12 +796,12 @@
     <button class="modal-close" onclick="closeModal('mmh')">×</button>
     <div class="modal-header">
       <p class="modal-tag">PR Strategy · F&B · Cause Marketing</p>
-      <h2 class="modal-title">Make Me Hungry — PR Coordinator</h2>
+      <h2 class="modal-title">Make Me Hungry — PR Account Coordinator</h2>
     </div>
     <div class="modal-body">
       <div class="modal-section">
         <p class="modal-section-label">The Context</p>
-        <p>Make Me Hungry is a boutique PR and brand storytelling agency founded by Lisa Strangis, a journalist with 10+ years in food and beverage PR. The agency's client roster spans restaurants, hospitality groups, and travel brands across Los Angeles and internationally — including clients in Queensland, Australia. I joined as a PR Coordinator Intern for a year, supporting a portfolio of 4 active F&B clients across media outreach, campaign strategy, and brand activation work.</p>
+        <p>Make Me Hungry is a boutique PR and brand storytelling agency founded by Lisa Strangis, a journalist with 10+ years in food and beverage PR. The agency's client roster spans restaurants, hospitality groups, and travel brands across Los Angeles and internationally — including clients in Queensland, Australia. I spent a year as a PR Coordinator Intern before stepping into my current role as PR Account Coordinator, supporting a portfolio of 4 active F&B clients across media outreach, campaign strategy, and brand activation work.</p>
       </div>
       <div class="modal-section">
         <p class="modal-section-label">What I Did</p>
