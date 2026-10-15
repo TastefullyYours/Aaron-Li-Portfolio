@@ -39,7 +39,11 @@
   .nav-links a:hover { color: var(--green-light); }
   .nav-resume { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); text-decoration: none; border: 1px solid var(--green); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; }
   .nav-resume:hover { background: var(--green); color: var(--white); }
-.nav-substack { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender-deep); text-decoration: none; border: 1px solid var(--lavender-deep); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; margin-right: 0.5rem; }
+.nav-substack { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender-deep); text-decoration: none; border: 1px solid var(--lavender-deep); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; }
+  .nav-pills { display: flex; gap: 0.5rem; flex-shrink: 0; }
+  .nav-name { white-space: nowrap; }
+  .nav-social { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); background: var(--green); text-decoration: none; border: 1px solid var(--green); padding: 0.45rem 1.1rem; transition: all 0.2s; flex-shrink: 0; }
+  .nav-social:hover { background: var(--green-mid); border-color: var(--green-mid); }
   .nav-substack:hover { background: var(--lavender-deep); color: var(--white); }
 #hero { min-height: 100vh; background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 5rem; align-items: center; padding: 8rem 4rem 6rem; position: relative; overflow: hidden; }
   #hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(155,133,181,0.35) 0%, transparent 65%); pointer-events: none; z-index: 0; }
@@ -232,21 +236,6 @@
   .modal-deck-btn { display: inline-block; margin-top: 1.25rem; padding: 0.6rem 1.5rem; border: 1px solid var(--green); color: var(--green); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
   .modal-deck-btn:hover { background: var(--green); color: var(--white); }
 
-  #content { padding-top: 2rem; }
-  .content-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--blue); margin: -1.5rem 0 2.5rem; max-width: 620px; line-height: 1.6; }
-  .social-feed { display: flex; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.5rem 0.25rem 1.5rem; scrollbar-width: thin; }
-  .social-card { flex: 0 0 260px; scroll-snap-align: start; display: flex; flex-direction: column; }
-  .social-media { position: relative; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden; background: var(--navy); box-shadow: 0 16px 36px rgba(30,48,85,0.22), 0 0 0 1px rgba(45,90,61,0.2); }
-  .social-media video, .social-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .social-platform { position: absolute; top: 0.75rem; left: 0.75rem; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); background: rgba(30,48,85,0.55); backdrop-filter: blur(6px); padding: 0.3rem 0.65rem; border-radius: 999px; }
-  .social-sound { position: absolute; bottom: 0.75rem; right: 0.75rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; border: none; background: rgba(30,48,85,0.6); backdrop-filter: blur(6px); color: var(--white); font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
-  .social-sound:hover { background: var(--green); }
-  .social-meta { padding: 1.1rem 0.25rem 0; }
-  .social-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--navy); line-height: 1.3; margin-bottom: 0.4rem; }
-  .social-caption { font-size: 0.85rem; color: #5a5a6a; line-height: 1.65; margin-bottom: 0.85rem; }
-  .social-link { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); text-decoration: none; border-bottom: 1px solid var(--green-light); padding-bottom: 0.1rem; }
-  .social-link:hover { color: var(--green-light); }
-
   #skills { background: var(--mist); max-width: 100%; padding: 6rem 0; }
   #skills > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
   .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-bottom: 4rem; }
@@ -290,6 +279,7 @@
 
   @media (max-width: 600px) {
     .nav-links { display: none; }
+    .nav-social, .nav-substack, .nav-resume { padding: 0.4rem 0.7rem; font-size: 0.65rem; letter-spacing: 0.1em; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .contact-links { flex-direction: column; align-items: center; }
   }
@@ -341,12 +331,14 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#content">Content</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-<a class="nav-substack" href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener">Substack</a>
+<div class="nav-pills">
+  <a class="nav-social" href="social.html">Social</a>
+  <a class="nav-substack" href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener">Substack</a>
   <a class="nav-resume" href="assets/aaron-li-resume.pdf" download>Résumé</a>
+</div>
 </nav>
 
 <section id="hero">
@@ -648,51 +640,6 @@
   </div>
 </section>
 
-<section id="content" class="fade-in">
-  <p class="section-eyebrow">Social Content</p>
-  <h2 class="section-title">Things I've made for the feed</h2>
-  <p class="contact-sub content-sub">Short-form food content, for brands and for my own feed — because the best way to understand an audience is to be part of it.</p>
-  <div class="social-feed">
-    <!-- To add a post: copy one .social-card block, swap the video/poster in assets/social/, and update the text + link. -->
-    <article class="social-card">
-      <div class="social-media">
-        <video src="assets/social/saijo.mp4" poster="assets/social/saijo-poster.jpg" muted loop playsinline preload="none" aria-label="TikTok: Saijo Hand Roll three-bite challenge"></video>
-        <span class="social-platform">TikTok · Saijo Hand Roll</span>
-        <button class="social-sound" aria-label="Unmute video">🔇</button>
-      </div>
-      <div class="social-meta">
-        <h3 class="social-title">Three bites, $100</h3>
-        <p class="social-caption">A street challenge for JINYA's Saijo Hand Roll: finish the roll in three bites and walk away with $100 — turning a menu item into a dare people want to watch.</p>
-        <a class="social-link" href="https://www.tiktok.com/@saijohandroll/video/7630500846899367181" target="_blank" rel="noopener">Watch on TikTok ↗</a>
-      </div>
-    </article>
-    <article class="social-card">
-      <div class="social-media">
-        <video src="assets/social/meat.mp4" poster="assets/social/meat-poster.jpg" muted loop playsinline preload="none" aria-label="TikTok: Aaron breaks down a $200 slab of beef"></video>
-        <span class="social-platform">TikTok</span>
-        <button class="social-sound" aria-label="Unmute video">🔇</button>
-      </div>
-      <div class="social-meta">
-        <h3 class="social-title">"My name is Aaron and I love meat"</h3>
-        <p class="social-caption">A broke college student drops $200 on a giant slab of beef — then justifies it by breaking it down into a week of cooking.</p>
-        <a class="social-link" href="https://www.tiktok.com/@clamantha_chowder/video/7687670128573451534" target="_blank" rel="noopener">Watch on TikTok ↗</a>
-      </div>
-    </article>
-    <article class="social-card">
-      <div class="social-media">
-        <video src="assets/social/nara.mp4" poster="assets/social/nara-poster.jpg" muted loop playsinline preload="none" aria-label="TikTok: a Nara Smith cooking parody"></video>
-        <span class="social-platform">TikTok</span>
-        <button class="social-sound" aria-label="Unmute video">🔇</button>
-      </div>
-      <div class="social-meta">
-        <h3 class="social-title">Nara Smith, but make it a toga</h3>
-        <p class="social-caption">A parody of the made-from-scratch cooking trend — riffing on a format the audience already knows by heart.</p>
-        <a class="social-link" href="https://www.tiktok.com/@clamantha_chowder/video/7440936864506268974" target="_blank" rel="noopener">Watch on TikTok ↗</a>
-      </div>
-    </article>
-  </div>
-</section>
-
 <div id="skills" class="fade-in">
   <div class="inner">
     <p class="section-eyebrow">Skills & Certifications</p>
@@ -872,6 +819,7 @@
       <div class="modal-outcome">↗ 20M+ organic views · 411K likes · 1M+ combined followers across brand portfolio</div>
       <a href="https://drive.google.com/file/d/1ghs1KBPwtMnfslKEEv5O78bpDJ9vBbzY/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn">View LinkedIn Strategy ↗</a>
       <a href="https://drive.google.com/file/d/1K3-EjXpo4yvxvJkWpteryoJtkuhtY1JC/view?usp=sharing" target="_blank" rel="noopener" class="modal-deck-btn" style="margin-left:0.75rem;">View Transition Doc ↗</a>
+      <a href="social.html" class="modal-deck-btn" style="margin-left:0.75rem;">See the Content →</a>
     </div>
   </div>
 </div>
@@ -1084,34 +1032,6 @@
   }, { threshold: 0.5 });
   counters.forEach(c => counterObserver.observe(c));
 
-  // Social content: autoplay muted while on screen, one unmuted at a time
-  const socialVideos = document.querySelectorAll('.social-media video');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !reduceMotion) entry.target.play().catch(() => {});
-      else entry.target.pause();
-    });
-  }, { threshold: 0.6 });
-  socialVideos.forEach(v => videoObserver.observe(v));
-
-  document.querySelectorAll('.social-sound').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const video = btn.parentElement.querySelector('video');
-      const unmute = video.muted;
-      document.querySelectorAll('.social-media').forEach(m => {
-        m.querySelector('video').muted = true;
-        m.querySelector('.social-sound').textContent = '🔇';
-        m.querySelector('.social-sound').setAttribute('aria-label', 'Unmute video');
-      });
-      if (unmute) {
-        video.muted = false;
-        video.play().catch(() => {});
-        btn.textContent = '🔊';
-        btn.setAttribute('aria-label', 'Mute video');
-      }
-    });
-  });
 </script>
 
 </body>
