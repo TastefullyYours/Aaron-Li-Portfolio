@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Li — Social Content</title>
+<meta name="description" content="Short-form food content, for brands and for my own feed.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aaron Li — Social Content">
+<meta property="og:description" content="Short-form food content, for brands and for my own feed.">
+<meta property="og:url" content="https://tastefullyyours.github.io/Aaron-Li-Portfolio/social.html">
+<meta property="og:image" content="https://tastefullyyours.github.io/Aaron-Li-Portfolio/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:         #FFFFFF;
+    --sky:           #F4F8FD;
+    --mist:          #DDE8F5;
+    --blue:          #4A6E96;
+    --lavender:      #C5B4D6;
+    --lavender-deep: #9B85B5;
+    --navy:          #1E3055;
+    --ink:           #1A2035;
+    --green:         #2D5A3D;
+    --green-light:   #5A9E6F;
+    --green-pale:    #E8F2EC;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 4rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(45,90,61,0.15); }
+  .nav-name { white-space: nowrap; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.12em; color: var(--navy); text-transform: uppercase; text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green-light); }
+  .nav-pills { display: flex; gap: 0.5rem; flex-shrink: 0; }
+  .nav-pill { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 0.45rem 1.1rem; transition: all 0.2s; border: 1px solid var(--green); color: var(--green); }
+  .nav-pill:hover, .nav-pill.active { background: var(--green); color: var(--white); }
+  .nav-pill--lavender { border-color: var(--lavender-deep); color: var(--lavender-deep); }
+  .nav-pill--lavender:hover { background: var(--lavender-deep); color: var(--white); }
+
+  header { background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); padding: 10rem 4rem 5rem; text-align: center; position: relative; overflow: hidden; }
+  header::after { content: ''; position: absolute; bottom: -250px; left: -200px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(90,158,111,0.28) 0%, transparent 65%); pointer-events: none; }
+  .eyebrow { font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; position: relative; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; color: var(--navy); margin-bottom: 1.5rem; position: relative; }
+  .header-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--blue); max-width: 620px; margin: 0 auto; line-height: 1.5; position: relative; }
+
+  section { padding: 5rem 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; color: var(--navy); line-height: 1.15; margin-bottom: 0.75rem; }
+  .section-sub { font-size: 0.95rem; color: #5a5a6a; max-width: 640px; margin-bottom: 2.5rem; }
+  .section-sub a { color: var(--green); }
+
+  .social-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 260px)); gap: 3rem 2rem; }
+  .social-card { display: flex; flex-direction: column; }
+  .social-media { position: relative; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden; background: var(--navy); box-shadow: 0 16px 36px rgba(30,48,85,0.22), 0 0 0 1px rgba(45,90,61,0.2); }
+  .social-media video, .social-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .social-platform { position: absolute; top: 0.75rem; left: 0.75rem; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); background: rgba(30,48,85,0.55); backdrop-filter: blur(6px); padding: 0.3rem 0.65rem; border-radius: 999px; }
+  .social-sound { position: absolute; bottom: 0.75rem; right: 0.75rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; border: none; background: rgba(30,48,85,0.6); backdrop-filter: blur(6px); color: var(--white); font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+  .social-sound:hover { background: var(--green); }
+  .social-meta { padding: 1.1rem 0.25rem 0; }
+  .social-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--navy); line-height: 1.3; margin-bottom: 0.4rem; }
+  .social-stats { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.03em; color: var(--green); margin-bottom: 0.4rem; }
+  .social-stats::before { content: '↗ '; color: var(--green-light); }
+  .social-caption { font-size: 0.85rem; color: #5a5a6a; line-height: 1.65; margin-bottom: 0.85rem; }
+  .social-link { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); text-decoration: none; border-bottom: 1px solid var(--green-light); padding-bottom: 0.1rem; }
+  .social-link:hover { color: var(--green-light); }
+
+  .back { text-align: center; padding: 4rem 1.5rem 6rem; }
+  .back a { display: inline-block; padding: 0.85rem 2.4rem; border: 1px solid var(--green); color: var(--green); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
+  .back a:hover { background: var(--green); color: var(--white); }
+
+  footer { background: var(--navy); text-align: center; padding: 2rem; font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    header { padding: 8rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem 1rem; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .nav-pill { padding: 0.4rem 0.7rem; font-size: 0.65rem; letter-spacing: 0.1em; }
+    .social-grid { grid-template-columns: minmax(0, 300px); justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-name" href="index.html">Aaron Li</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-pills">
+    <a class="nav-pill active" href="social.html" aria-current="page">Social</a>
+    <a class="nav-pill nav-pill--lavender" href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener">Substack</a>
+    <a class="nav-pill" href="assets/aaron-li-resume.pdf" download>Résumé</a>
+  </div>
+</nav>
+
+<header>
+  <p class="eyebrow">Social Content Portfolio</p>
+  <h1>Made for the feed</h1>
+  <p class="header-sub">Short-form food content, for brands and for my own feed — because the best way to understand an audience is to be part of it.</p>
+</header>
+
+<!-- To add a post: copy one <article class="social-card"> block into the right section,
+     put the video + poster frame in assets/social/, and update the text and link. -->
+
+<section>
+  <p class="section-eyebrow">Brand Work</p>
+  <h2 class="section-title">For the brands I've worked with</h2>
+  <p class="section-sub">Content made at JINYA Holdings.</p>
+  <div class="social-grid">
+    <article class="social-card">
+      <div class="social-media">
+        <video src="assets/social/saijo.mp4" poster="assets/social/saijo-poster.jpg" muted loop playsinline preload="none" aria-label="TikTok: Saijo Hand Roll three-bite challenge"></video>
+        <span class="social-platform">TikTok · Saijo Hand Roll</span>
+        <button class="social-sound" aria-label="Unmute video">🔇</button>
+      </div>
+      <div class="social-meta">
+        <h3 class="social-title">Three bites, $100</h3>
+        <p class="social-stats">11M views · 880K likes · 1K comments</p>
+        <p class="social-caption">A street challenge video made with my team for JINYA’s brand, Saijo Hand Roll.</p>
+        <a class="social-link" href="https://www.tiktok.com/@saijohandroll/video/7630500846899367181" target="_blank" rel="noopener">Watch on TikTok ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <p class="section-eyebrow">Personal</p>
+  <h2 class="section-title">On my own feed</h2>
+  <p class="section-sub">Food content I write, film, and edit myself on <a href="https://www.tiktok.com/@clamantha_chowder" target="_blank" rel="noopener">@clamantha_chowder</a>.</p>
+  <div class="social-grid">
+    <article class="social-card">
+      <div class="social-media">
+        <video src="assets/social/meat.mp4" poster="assets/social/meat-poster.jpg" muted loop playsinline preload="none" aria-label="TikTok: Aaron breaks down a $200 slab of beef"></video>
+        <span class="social-platform">TikTok</span>
+        <button class="social-sound" aria-label="Unmute video">🔇</button>
+      </div>
+      <div class="social-meta">
+        <h3 class="social-title">"My name is Aaron and I love meat"</h3>
+        <p class="social-caption">A broke college student drops $200 on a giant slab of beef.</p>
+        <a class="social-link" href="https://www.tiktok.com/@clamantha_chowder/video/7687670128573451534" target="_blank" rel="noopener">Watch on TikTok ↗</a>
+      </div>
+    </article>
+    <article class="social-card">
+      <div class="social-media">
+        <video src="assets/social/nara.mp4" poster="assets/social/nara-poster.jpg" muted loop playsinline preload="none" aria-label="TikTok: a Nara Smith cooking parody"></video>
+        <span class="social-platform">TikTok</span>
+        <button class="social-sound" aria-label="Unmute video">🔇</button>
+      </div>
+      <div class="social-meta">
+        <h3 class="social-title">Nara Smith who?</h3>
+        <p class="social-caption">Back when the Nara Smith parodies were popular, I riffed off of her branding, pace, and aesthetic in a mediocre way for humor.</p>
+        <a class="social-link" href="https://www.tiktok.com/@clamantha_chowder/video/7440936864506268974" target="_blank" rel="noopener">Watch on TikTok ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="back"><a href="index.html">← Back to portfolio</a></div>
+
+<footer>
+  <p>© 2026 Aaron Li &nbsp;·&nbsp; Brand & Marketing Strategist &nbsp;·&nbsp; Los Angeles</p>
+</footer>
+
+<script>
+  // Autoplay muted while on screen, one unmuted at a time
+  const socialVideos = document.querySelectorAll('.social-media video');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !reduceMotion) entry.target.play().catch(() => {});
+      else entry.target.pause();
+    });
+  }, { threshold: 0.6 });
+  socialVideos.forEach(v => videoObserver.observe(v));
+
+  document.querySelectorAll('.social-sound').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const video = btn.parentElement.querySelector('video');
+      const unmute = video.muted;
+      document.querySelectorAll('.social-media').forEach(m => {
+        m.querySelector('video').muted = true;
+        m.querySelector('.social-sound').textContent = '🔇';
+        m.querySelector('.social-sound').setAttribute('aria-label', 'Unmute video');
+      });
+      if (unmute) {
+        video.muted = false;
+        video.play().catch(() => {});
+        btn.textContent = '🔊';
+        btn.setAttribute('aria-label', 'Mute video');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
