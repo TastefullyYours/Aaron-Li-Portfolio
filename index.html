@@ -106,7 +106,13 @@
   .hero-photo--1, .hero-photo--2, .hero-photo--3, .hero-photo--4 { width: 130px; height: 160px; }
 }
 @media (max-width: 900px) {
-  .hero-photo-scatter { display: none; }
+  .hero-photo-scatter { position: static; display: flex; justify-content: center; gap: 0.6rem; width: 100%; max-width: 520px; overflow: visible; }
+  .hero-photo-scatter .hero-photo { position: static; flex: 1 1 0; min-width: 0; width: auto; height: auto; aspect-ratio: 4 / 5; box-shadow: 0 10px 24px rgba(30,48,85,0.22); }
+  .hero-photo-scatter .hero-photo--1 { transform: rotate(-4deg); object-position: center 25%; }
+  .hero-photo-scatter .hero-photo--2 { transform: rotate(3deg) translateY(6px); }
+  .hero-photo-scatter .hero-photo--3 { transform: rotate(-2deg); }
+  .hero-photo-scatter .hero-photo--4 { transform: rotate(4deg) translateY(4px); }
+  .hero-ctas { justify-content: center; }
 }
 .hero-content--centered { align-items: center; }
 .hero-name-big { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(4.5rem, 11vw, 9rem); line-height: 0.95; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
@@ -245,10 +251,14 @@
   .modal-deck-btn { display: inline-block; margin-top: 1.25rem; padding: 0.6rem 1.5rem; border: 1px solid var(--green); color: var(--green); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
   .modal-deck-btn:hover { background: var(--green); color: var(--white); }
 
-  .brand-strip { background: var(--white); text-align: center; padding: 2.5rem 1.5rem 0.5rem; }
-  .brand-strip-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); margin-bottom: 0.9rem; }
-  .brand-strip-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 3rem; }
-  .brand-strip-list li { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.2vw, 1.6rem); color: var(--navy); letter-spacing: 0.04em; }
+  .brand-marquee { background: var(--navy); overflow: hidden; padding: 1.25rem 0 1.5rem; border-top: 1px solid rgba(90,158,111,0.15); border-bottom: 1px solid rgba(90,158,111,0.15); }
+  .brand-marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+  .brand-marquee:hover .brand-marquee-track { animation-play-state: paused; }
+  .brand-marquee-group { list-style: none; display: flex; flex-shrink: 0; }
+  .brand-marquee-group li { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.4vw, 1.8rem); color: var(--white); letter-spacing: 0.04em; white-space: nowrap; padding: 0 2.25rem; position: relative; }
+  .brand-marquee-group li::after { content: ''; position: absolute; right: -4px; top: 50%; width: 7px; height: 7px; border-radius: 50%; background: var(--lavender); opacity: 0.8; transform: translateY(-50%); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .brand-marquee-track { animation: none; } }
 
   .writing-band { margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; background: var(--sky); border: 1px solid var(--mist); border-left: 3px solid var(--lavender-deep); padding: 2rem 2.2rem; }
   .writing-band .project-body { margin-bottom: 0; }
@@ -280,7 +290,7 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.5rem; }
-    #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; gap: 2.5rem; }
+    #hero { grid-template-columns: minmax(0, 1fr); align-content: center; padding: 6rem 1.5rem 4rem; gap: 2.5rem; }
     .hero-photo-wrap { order: -1; display: flex; justify-content: center; }
     .hero-photo { width: 200px; height: 250px; }
     section { padding: 5rem 1.5rem; }
@@ -293,6 +303,10 @@
     .modal { max-height: 90vh; }
     .modal-header, .modal-body { padding-left: 1.5rem; padding-right: 1.5rem; }
     .photo-accent { height: 220px; }
+  }
+
+  @media (max-width: 1000px) {
+    .nav-links { display: none; }
   }
 
   @media (max-width: 600px) {
@@ -405,15 +419,6 @@
   </div>
 </div>
 </section>
-<div class="brand-strip">
-  <p class="brand-strip-label">Where I've worked</p>
-  <ul class="brand-strip-list">
-    <li>Tiffany &amp; Co.</li>
-    <li>JINYA Holdings</li>
-    <li>Make Me Hungry</li>
-    <li>USC</li>
-  </ul>
-</div>
 <div class="botanical-divider" style="background:var(--white); padding:0.5rem 0;">
   <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M50 40 Q150 20 300 40 Q450 60 550 40" stroke="#9B85B5" stroke-width="1.2" fill="none" opacity="0.6"/>
@@ -517,6 +522,13 @@
     <ellipse cx="416" cy="38" rx="5" ry="2" fill="#5A9E6F" opacity="0.4" transform="rotate(-40 416 38)"/>
     <ellipse cx="424" cy="42" rx="5" ry="2" fill="#5A9E6F" opacity="0.4" transform="rotate(40 424 42)"/>
   </svg>
+</div>
+
+<div class="brand-marquee" aria-label="Where I've worked">
+  <div class="brand-marquee-track">
+    <ul class="brand-marquee-group"><li>Tiffany &amp; Co.</li><li>JINYA Holdings</li><li>Make Me Hungry</li><li>USC Auxiliaries</li><li>Tiffany &amp; Co.</li><li>JINYA Holdings</li><li>Make Me Hungry</li><li>USC Auxiliaries</li></ul>
+    <ul class="brand-marquee-group" aria-hidden="true"><li>Tiffany &amp; Co.</li><li>JINYA Holdings</li><li>Make Me Hungry</li><li>USC Auxiliaries</li><li>Tiffany &amp; Co.</li><li>JINYA Holdings</li><li>Make Me Hungry</li><li>USC Auxiliaries</li></ul>
+  </div>
 </div>
 
 <div id="experience" class="fade-in">
