@@ -212,11 +212,14 @@
   .exp-bullets li { font-size: 0.93rem; color: rgba(255,255,255,0.75); line-height: 1.7; padding-left: 1.2rem; position: relative; margin-bottom: 0.6rem; }
   .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 1px; background: var(--green-light); }
 
-  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .projects-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; }
+  .projects-grid > .project-card { grid-column: span 2; }
   .project-card { background: var(--sky); border: 1px solid var(--mist); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
   .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(45,90,61,0.12); }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--green); z-index: 2; }
-  .project-card--wide { grid-column: span 3; }
+  .projects-grid > .project-card--wide { grid-column: span 6; }
+  .projects-grid > .project-card--half { grid-column: span 3; }
+  .project-card--half .project-card-img { height: 220px; }
   .project-card-img { width: 100%; height: 180px; object-fit: cover; display: block; border-bottom: 1px solid var(--mist); }
  .project-card--wide .project-card-img { height: 220px; }
  .project-card-body { padding: 2.2rem; flex: 1; display: flex; flex-direction: column; }
@@ -260,13 +263,26 @@
   @keyframes marquee { to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) { .brand-marquee-track { animation: none; } }
 
+  #projects { scroll-margin-top: 70px; }
+  .work-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: -1rem 0 1.25rem; }
+  .work-tab { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); background: transparent; border: 1px solid rgba(45,90,61,0.35); padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
+  .work-tab:hover { border-color: var(--green); }
+  .work-tab.active { background: var(--green); border-color: var(--green); color: var(--white); }
+  .work-brief a { color: var(--green); font-style: normal; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--green-light); white-space: nowrap; }
+  .work-brief a:hover { color: var(--green-light); }
+  .work-brief { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--blue); line-height: 1.55; max-width: 760px; margin-bottom: 2rem; min-height: 1.6em; }
+  .projects-grid [data-tab-only] { display: none; }
+  .projects-grid.is-filtered > .project-card { grid-column: span 3; display: flex; }
+  .projects-grid.is-filtered > .project-card .project-card-img { height: 200px; }
+  .projects-grid.is-filtered > .project-card.span-full { grid-column: span 6; }
+  .projects-grid > .project-card.is-hidden, .writing-band.is-hidden { display: none !important; }
   .writing-band { margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; background: var(--sky); border: 1px solid var(--mist); border-left: 3px solid var(--lavender-deep); padding: 2rem 2.2rem; }
   .writing-band .project-body { margin-bottom: 0; }
   .writing-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 0.4rem; }
 
   #skills { background: var(--mist); max-width: 100%; padding: 6rem 0; }
   #skills > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
-  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-bottom: 4rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; margin-bottom: 4rem; }
   .skill-group-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(45,90,61,0.2); }
   .skill-group ul { list-style: none; }
   .skill-group li { font-size: 0.9rem; color: #4a4a5a; padding: 0.35rem 0; border-bottom: 1px solid rgba(30,48,85,0.06); }
@@ -297,7 +313,8 @@
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
     .projects-grid { grid-template-columns: 1fr; }
-    .project-card--wide { grid-column: auto; }
+    .projects-grid > .project-card, .projects-grid > .project-card--wide, .projects-grid > .project-card--half, .projects-grid.is-filtered > .project-card, .projects-grid.is-filtered > .project-card.span-full { grid-column: auto; }
+    .work-tabs { margin-top: -1.25rem; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     #experience > .inner, #skills > .inner { padding: 0 1.5rem; }
     .modal { max-height: 90vh; }
@@ -547,6 +564,7 @@
           <ul class="exp-bullets">
             <li>Reformulate large-scale PR performance data — UVM, media impressions, and Muck Rack exports — in Excel to quantify PR impact for client Tourism and Events Queensland, tracking press placements and headline coverage across campaigns.</li>
             <li>Build and maintain targeted media lists and draft press materials and pitches for Make Me Hungry's restaurant clients — Kizuki Ramen & Izakaya and Supreme Dumplings — executing outreach and securing media placements across food and lifestyle press.</li>
+            <li>Conduct market research and build media lists for CPG and wholesale clients, including Flannery Beef and a Wine Country wholesaler.</li>
             <li>Collaborate with brand leadership on content strategy, developing pitch decks and refining pitch angles tailored to individual stakeholders.</li>
           </ul>
           <a href="https://drive.google.com/file/d/1DafpNC4fii7zhDDeDAwS3Xg0XEZlpSlr/view?usp=sharing" target="_blank" rel="noopener" class="project-btn" style="margin-top:1rem;text-decoration:none;">View Press Guest List →</a>
@@ -579,7 +597,7 @@
           <ul class="exp-bullets">
             <li>Managed content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for a Japanese-inspired hospitality group with 85+ locations and 1M+ combined followers.</li>
             <li>Executed influencer outreach, partnership research, and community engagement initiatives across multiple restaurant concepts to drive audience growth and brand consistency.</li>
-           <li>Leveraged social analytics and trend research to optimize content cadence and performance; informed campaigns that generated 20M+ organic views, including a single post with 411K likes and 6K shares.</li>
+           <li>Leveraged social analytics and trend research to optimize content cadence and performance across organic and paid posts; informed campaigns that generated 20M+ organic views, including a single post with 411K likes and 6K shares.</li>
           </ul>
           <button class="project-btn" onclick="openModal('jinya')" style="margin-top:1rem;">View My Work →</button>
         </div>
@@ -635,8 +653,17 @@
 <section id="projects" class="fade-in">
   <p class="section-eyebrow">Projects</p>
   <h2 class="section-title">Selected work</h2>
+  <div class="work-tabs" role="group" aria-label="Filter projects by skill">
+    <button class="work-tab active" data-filter="all" aria-pressed="true">All</button>
+    <button class="work-tab" data-filter="social" aria-pressed="false">Social &amp; Content</button>
+    <button class="work-tab" data-filter="copy" aria-pressed="false">Copy &amp; Storytelling</button>
+    <button class="work-tab" data-filter="strategy" aria-pressed="false">Brand Strategy</button>
+    <button class="work-tab" data-filter="pr" aria-pressed="false">PR &amp; Events</button>
+    <button class="work-tab" data-filter="research" aria-pressed="false">Research &amp; Insights</button>
+  </div>
+  <p class="work-brief" id="work-brief" aria-live="polite"></p>
   <div class="projects-grid">
-    <div class="project-card project-card--wide fade-in">
+    <div class="project-card project-card--wide fade-in" data-tags="strategy research">
       <img class="project-card-img" src="assets/cafe.jpg" alt="Tiffany Blue Box Cafe" style="object-position: center 18%;"/>
       <div class="project-card-body">
         <p class="project-tag">Gen Z Strategy · Consumer Behavior · Luxury Retail</p>
@@ -646,17 +673,17 @@
         <a href="https://drive.google.com/file/d/1E3TSMr_qZFbNATzAarmjoaXqPwAXcsRC/view?usp=sharing" target="_blank" rel="noopener" class="project-btn" style="text-decoration:none;">View Full Deck →</a>
       </div>
     </div>
-   <div class="project-card fade-in">
+   <div class="project-card fade-in" data-tags="pr copy">
       <img class="project-card-img" src="assets/MMH%20logo.png" alt="Make Me Hungry"/>
       <div class="project-card-body">
         <p class="project-tag">PR Strategy · Cause Marketing</p>
         <h3 class="project-title">Make Me Hungry — PR Account Coordinator</h3>
-        <p class="project-body">A boutique F&B PR agency in LA. Pitched, ghostwrote, and executed earned media and brand activation work across a portfolio of hospitality clients — including a cause-marketing concept that was adopted by a CEO and executed as a full campaign.</p>
+        <p class="project-body">A boutique F&B PR agency in LA. Pitched, ghostwrote, and executed earned media and brand activation work across a portfolio of hospitality and CPG clients — including a cause-marketing concept that was adopted by a CEO and executed as a full campaign.</p>
         <p class="project-outcome">CEO-adopted campaign · <span data-target="4+">4</span>-client PR portfolio · Lupus Awareness activation</p>
         <button class="project-btn" onclick="openModal('mmh')">View My Work →</button>
       </div>
     </div>
-<div class="project-card fade-in">
+<div class="project-card fade-in" data-tags="strategy social">
       <img class="project-card-img" src="assets/11vnshirt.png" alt="11VN11"/>
       <div class="project-card-body">
         <p class="project-tag">Brand Strategy · Social Media</p>
@@ -666,7 +693,7 @@
         <button class="project-btn" onclick="openModal('vn11')">View My Work →</button>
       </div>
     </div>
-<div class="project-card fade-in">
+<div class="project-card fade-in" data-tags="strategy social pr">
       <img class="project-card-img" src="assets/Bon2%20Image.jpg" alt="Break On 2"/>
       <div class="project-card-body">
         <p class="project-tag">Revenue Strategy</p>
@@ -676,7 +703,48 @@
         <button class="project-btn" onclick="openModal('bo2')">View My Work →</button>
       </div>
     </div>
-<div class="project-card project-card--wide fade-in">
+<div class="project-card project-card--half fade-in" data-tags="strategy social copy research">
+      <img class="project-card-img" src="assets/offseason/cover.jpg" alt="Off Season OFF//MODE pitch cover" style="object-position: 70% 30%;"/>
+      <div class="project-card-body">
+        <p class="project-tag">SEO + GEO Strategy · Brand Identity · Google Pitch</p>
+        <h3 class="project-title">Off Season — OFF//MODE Growth Strategy</h3>
+        <p class="project-body">My AI audit found Off Season, a female-first sports fashion brand, had 0% share of voice when fans asked AI tools what to wear. Our team's answer: OFF//MODE, a style quiz and content system built to make the brand the answer in search and AI. I designed its mockups and implementation plan.</p>
+        <p class="project-outcome">0% → 15% AI share-of-voice target · 90-day pilot · Pitched to Google Dublin</p>
+        <button class="project-btn" onclick="openModal('offseason')">View My Work →</button>
+      </div>
+    </div>
+<div class="project-card project-card--half fade-in" data-tags="strategy research">
+      <img class="project-card-img" src="assets/sipmatch/sipmatch-banner.jpg" alt="SipMatch app screens"/>
+      <div class="project-card-body">
+        <p class="project-tag">Product Strategy · Consumer Psychology · Prototyping</p>
+        <h3 class="project-title">SipMatch — A Match for Every Meal</h3>
+        <p class="project-body">A drink-pairing app for casual drinkers who feel lost in the wine aisle. For USC's product management course (MOR 531), I took it from concept to PRD to a working, clickable prototype that matches drinks to your mood, your occasion, and what you're eating.</p>
+        <p class="project-outcome">Concept → PRD → working prototype · <span data-target="67">67</span>-drink dataset · Mood-based matching</p>
+        <button class="project-btn" onclick="openModal('sipmatch')">View My Work →</button>
+        <a href="https://sip-match-prototype-for-mor-531.vercel.app/" target="_blank" rel="noopener" class="project-btn" style="margin-top:0.6rem;text-decoration:none;">Try the App ↗</a>
+      </div>
+    </div>
+<div class="project-card fade-in" data-tags="social" data-tab-only>
+      <img class="project-card-img" src="assets/Saijo%20Screenshot%202.png" alt="Saijo Hand Roll Instagram post" style="object-position: left 30%;"/>
+      <div class="project-card-body">
+        <p class="project-tag">Social Strategy · Creators · Community</p>
+        <h3 class="project-title">JINYA Holdings — Social Media Coordinator</h3>
+        <p class="project-body">Content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for a hospitality group with 85+ locations: monthly content calendars, influencer outreach, community management, paid posts, and analytics-driven posting.</p>
+        <p class="project-outcome">20M+ organic views · 1M+ combined followers · 4 platforms</p>
+        <button class="project-btn" onclick="openModal('jinya')">View My Work →</button>
+      </div>
+    </div>
+<div class="project-card fade-in" data-tags="social copy" data-tab-only>
+      <img class="project-card-img" src="assets/social/feed-banner.jpg" alt="Three short-form food videos"/>
+      <div class="project-card-body">
+        <p class="project-tag">Short-Form Video · UGC-Style · TikTok</p>
+        <h3 class="project-title">Made for the Feed</h3>
+        <p class="project-body">Short-form food content, for brands and for my own feed: a street-challenge video for Saijo Hand Roll, plus videos I write, film, and edit myself on TikTok.</p>
+        <p class="project-outcome">11M views · 880K likes on the Saijo challenge</p>
+        <a href="social.html" class="project-btn" style="text-decoration:none;">Watch the Videos →</a>
+      </div>
+    </div>
+<div class="project-card project-card--wide fade-in" data-tags="research strategy">
       <img class="project-card-img" src="assets/spoonsforsupportSS.png" alt="Spoons for Support"/>
       <div class="project-card-body">
         <p class="project-tag">Behavioral Research · USC Dornsife · Cause Marketing</p>
@@ -687,7 +755,7 @@
       </div>
     </div>
   </div>
-  <div class="writing-band fade-in">
+  <div class="writing-band fade-in" data-tags="copy">
     <div>
       <p class="project-tag">Writing Samples</p>
       <h3 class="writing-title">Tastefully Yours</h3>
@@ -714,14 +782,27 @@
         </ul>
       </div>
       <div class="skill-group">
+        <p class="skill-group-title">Writing & Content</p>
+        <ul>
+          <li>Copywriting</li>
+          <li>Brand Voice</li>
+          <li>Press Releases & Pitches</li>
+          <li>Captions & Scripts</li>
+          <li>Short-Form Video & UGC</li>
+          <li>Editing & Proofreading</li>
+        </ul>
+      </div>
+      <div class="skill-group">
         <p class="skill-group-title">Digital & Social</p>
         <ul>
           <li>Social Media Strategy</li>
           <li>Content Planning</li>
           <li>Influencer Marketing</li>
+          <li>Paid Social</li>
           <li>Community Management</li>
           <li>SEO</li>
           <li>Google Ads / GMB</li>
+          <li>GEO / AI Search Visibility</li>
         </ul>
       </div>
       <div class="skill-group">
@@ -733,6 +814,7 @@
           <li>Canva</li>
           <li>R Statistics</li>
           <li>Python</li>
+          <li>AI-Assisted Prototyping</li>
         </ul>
       </div>
       <div class="skill-group">
@@ -801,7 +883,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Aaron Li &nbsp;·&nbsp; Brand & Marketing Strategist &nbsp;·&nbsp; Los Angeles</p>
+  <p>© 2026 Aaron Li &nbsp;·&nbsp; Brand & Marketing Strategist &nbsp;·&nbsp; Los Angeles &nbsp;·&nbsp; Designed &amp; built by me</p>
 </footer>
 <div class="modal-overlay" id="modal-mmh" onclick="closeModalOnBg(event, 'mmh')">
   <div class="modal">
@@ -813,7 +895,7 @@
     <div class="modal-body">
       <div class="modal-section">
         <p class="modal-section-label">The Context</p>
-        <p>Make Me Hungry is a boutique PR and brand storytelling agency founded by Lisa Strangis, a journalist with 10+ years in food and beverage PR. The agency's client roster spans restaurants, hospitality groups, and travel brands across Los Angeles and internationally — including clients in Queensland, Australia. I spent a year as a PR Coordinator Intern before stepping into my current role as PR Account Coordinator, supporting a portfolio of 4 active F&B clients across media outreach, campaign strategy, and brand activation work.</p>
+        <p>Make Me Hungry is a boutique PR and brand storytelling agency founded by Lisa Strangis, a journalist with 10+ years in food and beverage PR. The agency's client roster spans restaurants, hospitality groups, CPG and wholesale brands (including Flannery Beef and a Wine Country wholesaler), and travel brands across Los Angeles and internationally — including clients in Queensland, Australia. I spent a year as a PR Coordinator Intern before stepping into my current role as PR Account Coordinator, supporting a portfolio of 4 active F&B clients across media outreach, campaign strategy, and brand activation work.</p>
       </div>
       <div class="modal-section">
         <p class="modal-section-label">What I Did</p>
@@ -821,7 +903,7 @@
           <li>Researched, drafted, and pitched media materials including press releases, pitch angles, and editorial outreach for restaurant launches, press dinners, and influencer previews</li>
           <li>Built and maintained targeted journalist and influencer outreach lists using Muck Rack across markets including Los Angeles, Detroit, and Queensland</li>
           <li>Translated Muck Rack KPI reports into restructured Excel dashboards — quantifying $52.4M AUD in earned media value for international stakeholders</li>
-          <li>Briefed the CMO and partners using AI-optimized Google Maps visibility reports to improve restaurant discoverability by 1.5x</li>
+          <li>Briefed the CMO and partners on generative engine optimization (GEO), using AI-optimized Google Maps visibility reports to improve restaurant discoverability by 1.5x</li>
           <li>Assisted with event logistics for press dinners, influencer previews, and brand activations including the Tail O' the Pup LA launch event</li>
         </ul>
       </div>
@@ -859,6 +941,7 @@
         <p class="modal-section-label">What I Did</p>
         <ul>
           <li>Managed content strategy and creative direction across 4 platforms for a portfolio of Japanese-inspired restaurant brands</li>
+          <li>Supported organic and paid social, including posts run as paid ads</li>
           <li>Executed influencer outreach and partnership research, coordinating content approvals cross-functionally including sign-off from executive leadership</li>
           <li>Leveraged social analytics and trend research to optimize content cadence, posting strategy, and content mix</li>
           <li>Built monthly content calendars and a multi-pillar LinkedIn content strategy spanning seasonal, culture, industry, and awards-focused posts across the brand portfolio</li>
@@ -954,6 +1037,91 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="modal-offseason" onclick="closeModalOnBg(event, 'offseason')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('offseason')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">SEO + GEO Strategy · Brand Identity · Community</p>
+      <h2 class="modal-title">Off Season — OFF//MODE Growth Strategy</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Brief</p>
+        <p>Off Season is a premium, female-first sports fashion brand: licensed team apparel elevated from stadium-grade to street-ready. A five-person team for USC MKT 599, we built a growth strategy and pitched it to Google in Dublin. The challenge: demand followed the team schedule, the brand risked getting lost in its own collaborations, and fans who loved the product didn't always know what to wear.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">My Role</p>
+        <ul>
+          <li>Ran the AI visibility audit that became the pitch's core evidence</li>
+          <li>Designed the OFF//MODE mockups, including the "What's Your Mode?" landing page</li>
+          <li>Built the implementation plan for rolling OFF//MODE out</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">The Evidence</p>
+        <p>I audited how generative AI answers fan style questions across Gemini, ChatGPT, Claude, and Copilot. Off Season's share of voice was 0%: the brand simply didn't show up, even as 68% of U.S. consumers report using AI search for shopping. No visibility meant no consideration.</p>
+        <img src="assets/offseason/ai-share-of-voice.jpg" alt="Slide: Off Season has 0% AI share of voice" style="width:100%;border-radius:4px;margin-top:1rem;border:1px solid var(--mist);"/>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">The Strategy: Be Found → Be Known → Be Chosen Again</p>
+        <ul>
+          <li><strong>Be found:</strong> OFF//MODE, a "What's Your Mode?" style quiz landing page whose natural Q&amp;A format gives search engines and AI tools owned, structured answers to cite</li>
+          <li><strong>Be known:</strong> an integrated campaign of Game, Race, Courtside, and Street modes across YouTube, TikTok, and Instagram, built around the line "Your team has a schedule. Your style doesn't."</li>
+          <li><strong>Be chosen again:</strong> a cross-team community identity ("I'm an Off Season girl," not just "I'm a ___ fan"), with a Game Day Outfit of the Week to keep fans posting year-round</li>
+        </ul>
+        <img src="assets/offseason/offmode.jpg" alt="Slide: the OFF//MODE landing page" style="width:100%;border-radius:4px;margin-top:1rem;border:1px solid var(--mist);"/>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Measurement &amp; Investment</p>
+        <p>A six-KPI executive dashboard (AI share of voice, CAC, conversion, repeat and cross-league purchase, quiz completion) and a $5–10K, 90-day pilot timed to the sports calendar, from the Super Bowl through the start of the F1 and WNBA seasons, with a Day-90 gate to scale what works.</p>
+      </div>
+      <div class="modal-outcome">↗ 0% → 15% AI share-of-voice target · $5–10K, 90-day pilot · Pitched to Google Dublin</div>
+      <a href="assets/offseason-google-pitch.pdf" target="_blank" rel="noopener" class="modal-deck-btn">View Full Deck ↗</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sipmatch" onclick="closeModalOnBg(event, 'sipmatch')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('sipmatch')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">Product Strategy · Consumer Psychology · Prototyping</p>
+      <h2 class="modal-title">SipMatch — A Match for Every Meal</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Problem</p>
+        <p>Casual drinkers often freeze in the grocery aisle: wine and spirits tools assume you already know what you like, and apps like Vivino need a bottle in your hand. SipMatch starts earlier, from your mood, your occasion, and what's for dinner, and tells you what to grab. No wine degree required.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">What I Built</p>
+        <ul>
+          <li>A one-time taste profile (palate, drink types, allergies) plus a quick "tonight's match" quiz: mood, occasion, budget, and the dish</li>
+          <li>Results that explain themselves: why the drink works, the pairing principle behind it, and what to look for at the store</li>
+          <li>A curated 67-drink dataset across wine, beer, cider, spirits, cocktails, and non-alcoholic options, with recipes for mixed drinks</li>
+          <li>Saved drinks with ratings that shape future matches, plus premium previews: snap your cart, reverse pairing, and taste-community group chats</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">The Psychology Behind It</p>
+        <p>Matching is grounded in mood-and-taste research: cheerful moods heighten sweetness and draw people to bright, fizzy flavors; stress makes bitter and sour taste harsher; low moods dull taste and pull people toward nostalgic, comforting drinks. SipMatch adjusts its recommendations for each, so the suggestion fits how you actually feel tonight.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">How I Built It</p>
+        <p>I wrote the product brief and PRD, then directed the build with an AI coding assistant, reviewing and approving each product, copy, and design decision and documenting every prompt in a process log. The prototype runs entirely in the browser, on phone and desktop.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
+        <img src="assets/sipmatch/welcome.jpg" alt="SipMatch welcome screen" style="width:100%;border-radius:8px;border:1px solid var(--mist);"/>
+        <img src="assets/sipmatch/dish.jpg" alt="SipMatch dish flavor scan" style="width:100%;border-radius:8px;border:1px solid var(--mist);"/>
+        <img src="assets/sipmatch/results.jpg" alt="SipMatch results: Pinot Noir for salmon" style="width:100%;border-radius:8px;border:1px solid var(--mist);"/>
+      </div>
+      <div class="modal-outcome">↗ Concept → PRD → working prototype · 67-drink dataset · Mood-based matching</div>
+      <a href="https://sip-match-prototype-for-mor-531.vercel.app/" target="_blank" rel="noopener" class="modal-deck-btn">Try the App ↗</a>
+      <a href="https://github.com/TastefullyYours/SipMatch-Prototype-for-MOR-531/blob/main/PROCESS_LOG.md" target="_blank" rel="noopener" class="modal-deck-btn" style="margin-left:0.75rem;">View Process Log ↗</a>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-ibm" onclick="closeModalOnBg(event, 'ibm')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('ibm')">×</button>
@@ -1018,6 +1186,47 @@
     document.querySelector('.tagline-vine').classList.add('grown');
   }, 600);
  
+  // Project filter tabs, with a short brief per tab and shareable links (e.g. #social)
+  const workBriefs = {
+    all: 'Strategy, content, and storytelling for food, beverage, and lifestyle brands. Choose a lens to see the work behind each skill.',
+    social: 'I ran organic and paid social for an 85+ location restaurant group, informed campaigns that drew 20M+ organic views, and make short-form food content of my own. This is the feed side of my work: calendars, creators, community, and the numbers behind them. <a href="social.html">Watch the videos →</a>',
+    copy: 'Taglines, press pitches, campaign concepts, and the food essays I write on Substack. I write across voices, from luxury to playful to press-ready, and I like finding the one a brand already has.',
+    strategy: 'Repositioning, growth plans, and campaigns grounded in how people see themselves. Each starts with a real business problem and ends with a plan someone can run.',
+    pr: 'Earned media, press dinners, activations, and events, plus the stories that make a brand worth writing about.',
+    research: 'Consumer psychology is where I start: behavioral research, AI visibility audits, and the insight behind every recommendation.'
+  };
+  const workGrid = document.querySelector('.projects-grid');
+  const workCards = [...workGrid.querySelectorAll(':scope > .project-card')];
+  const writingBand = document.querySelector('.writing-band');
+  function setWorkFilter(filter) {
+    if (!workBriefs[filter]) filter = 'all';
+    document.querySelectorAll('.work-tab').forEach(t => {
+      const on = t.dataset.filter === filter;
+      t.classList.toggle('active', on); t.setAttribute('aria-pressed', on);
+    });
+    document.getElementById('work-brief').innerHTML = workBriefs[filter];
+    workGrid.classList.toggle('is-filtered', filter !== 'all');
+    const shown = [];
+    workCards.forEach(c => {
+      const tagged = (c.dataset.tags || '').split(' ').includes(filter);
+      const show = filter === 'all' ? !c.hasAttribute('data-tab-only') : tagged;
+      c.classList.toggle('is-hidden', !show);
+      c.classList.remove('span-full');
+      if (show) { shown.push(c); c.classList.add('visible'); if (filter !== 'all') c.style.display = 'flex'; else c.style.display = ''; }
+    });
+    if (filter !== 'all' && shown.length % 2 === 1) shown[shown.length - 1].classList.add('span-full');
+    writingBand.classList.toggle('is-hidden', !(filter === 'all' || filter === 'copy'));
+  }
+  document.querySelectorAll('.work-tab').forEach(t => t.addEventListener('click', () => {
+    setWorkFilter(t.dataset.filter);
+    history.replaceState(null, '', t.dataset.filter === 'all' ? '#projects' : '#' + t.dataset.filter);
+  }));
+  const startFilter = location.hash.slice(1);
+  setWorkFilter(startFilter);
+  if (workBriefs[startFilter] && startFilter !== 'all') {
+    window.addEventListener('load', () => document.getElementById('projects').scrollIntoView());
+  }
+
   // Fade-in on scroll
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver((entries) => {
