@@ -212,11 +212,14 @@
   .exp-bullets li { font-size: 0.93rem; color: rgba(255,255,255,0.75); line-height: 1.7; padding-left: 1.2rem; position: relative; margin-bottom: 0.6rem; }
   .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 1px; background: var(--green-light); }
 
-  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .projects-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; }
+  .projects-grid > .project-card { grid-column: span 2; }
   .project-card { background: var(--sky); border: 1px solid var(--mist); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
   .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(45,90,61,0.12); }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--green); z-index: 2; }
-  .project-card--wide { grid-column: span 3; }
+  .projects-grid > .project-card--wide { grid-column: span 6; }
+  .projects-grid > .project-card--half { grid-column: span 3; }
+  .project-card--half .project-card-img { height: 220px; }
   .project-card-img { width: 100%; height: 180px; object-fit: cover; display: block; border-bottom: 1px solid var(--mist); }
  .project-card--wide .project-card-img { height: 220px; }
  .project-card-body { padding: 2.2rem; flex: 1; display: flex; flex-direction: column; }
@@ -297,7 +300,7 @@
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
     .projects-grid { grid-template-columns: 1fr; }
-    .project-card--wide { grid-column: auto; }
+    .projects-grid > .project-card, .projects-grid > .project-card--wide, .projects-grid > .project-card--half { grid-column: auto; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     #experience > .inner, #skills > .inner { padding: 0 1.5rem; }
     .modal { max-height: 90vh; }
@@ -676,7 +679,17 @@
         <button class="project-btn" onclick="openModal('bo2')">View My Work →</button>
       </div>
     </div>
-<div class="project-card project-card--wide fade-in">
+<div class="project-card project-card--half fade-in">
+      <img class="project-card-img" src="assets/offseason/cover.jpg" alt="Off Season OFF//MODE pitch cover" style="object-position: 70% 30%;"/>
+      <div class="project-card-body">
+        <p class="project-tag">SEO + GEO Strategy · Brand Identity · Google Pitch</p>
+        <h3 class="project-title">Off Season — OFF//MODE Growth Strategy</h3>
+        <p class="project-body">Our audit found Off Season, a female-first sports fashion brand, had 0% share of voice when fans asked AI tools what to wear. Our team's answer: OFF//MODE, a style quiz and content system built to make the brand the answer in search and AI, then turn shoppers into a community.</p>
+        <p class="project-outcome">0% → 15% AI share-of-voice target · 90-day pilot · Pitched to Google Dublin</p>
+        <button class="project-btn" onclick="openModal('offseason')">View My Work →</button>
+      </div>
+    </div>
+<div class="project-card project-card--half fade-in">
       <img class="project-card-img" src="assets/sipmatch/sipmatch-banner.jpg" alt="SipMatch app screens"/>
       <div class="project-card-body">
         <p class="project-tag">Product Strategy · Consumer Psychology · Prototyping</p>
@@ -684,6 +697,7 @@
         <p class="project-body">A drink-pairing app for casual drinkers who feel lost in the wine aisle. For USC's product management course (MOR 531), I took it from concept to PRD to a working, clickable prototype that matches drinks to your mood, your occasion, and what you're eating.</p>
         <p class="project-outcome">Concept → PRD → working prototype · <span data-target="67">67</span>-drink dataset · Mood-based matching</p>
         <button class="project-btn" onclick="openModal('sipmatch')">View My Work →</button>
+        <a href="https://sip-match-prototype-for-mor-531.vercel.app/" target="_blank" rel="noopener" class="project-btn" style="margin-top:0.6rem;text-decoration:none;">Try the App ↗</a>
       </div>
     </div>
 <div class="project-card project-card--wide fade-in">
@@ -966,6 +980,42 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="modal-offseason" onclick="closeModalOnBg(event, 'offseason')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('offseason')">×</button>
+    <div class="modal-header">
+      <p class="modal-tag">SEO + GEO Strategy · Brand Identity · Community</p>
+      <h2 class="modal-title">Off Season — OFF//MODE Growth Strategy</h2>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <p class="modal-section-label">The Brief</p>
+        <p>Off Season is a premium, female-first sports fashion brand: licensed team apparel elevated from stadium-grade to street-ready. A five-person team for USC MKT 599, we built a growth strategy and pitched it to Google in Dublin. The challenge: demand followed the team schedule, the brand risked getting lost in its own collaborations, and fans who loved the product didn't always know what to wear.</p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">The Evidence</p>
+        <p>We audited how generative AI answers fan style questions across Gemini, ChatGPT, Claude, and Copilot. Off Season's share of voice was 0%: the brand simply didn't show up, even as 68% of U.S. consumers report using AI search for shopping. No visibility meant no consideration.</p>
+        <img src="assets/offseason/ai-share-of-voice.jpg" alt="Slide: Off Season has 0% AI share of voice" style="width:100%;border-radius:4px;margin-top:1rem;border:1px solid var(--mist);"/>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">The Strategy: Be Found → Be Known → Be Chosen Again</p>
+        <ul>
+          <li><strong>Be found:</strong> OFF//MODE, a "What's Your Mode?" style quiz landing page whose natural Q&amp;A format gives search engines and AI tools owned, structured answers to cite</li>
+          <li><strong>Be known:</strong> an integrated campaign of Game, Race, Courtside, and Street modes across YouTube, TikTok, and Instagram, built around the line "Your team has a schedule. Your style doesn't."</li>
+          <li><strong>Be chosen again:</strong> a cross-team community identity ("I'm an Off Season girl," not just "I'm a ___ fan"), with a Game Day Outfit of the Week to keep fans posting year-round</li>
+        </ul>
+        <img src="assets/offseason/offmode.jpg" alt="Slide: the OFF//MODE landing page" style="width:100%;border-radius:4px;margin-top:1rem;border:1px solid var(--mist);"/>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-label">Measurement &amp; Investment</p>
+        <p>A six-KPI executive dashboard (AI share of voice, CAC, conversion, repeat and cross-league purchase, quiz completion) and a $5–10K, 90-day pilot timed to the sports calendar, from the Super Bowl through the start of the F1 and WNBA seasons, with a Day-90 gate to scale what works.</p>
+      </div>
+      <div class="modal-outcome">↗ 0% → 15% AI share-of-voice target · $5–10K, 90-day pilot · Pitched to Google Dublin</div>
+      <a href="assets/offseason-google-pitch.pdf" target="_blank" rel="noopener" class="modal-deck-btn">View Full Deck ↗</a>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-sipmatch" onclick="closeModalOnBg(event, 'sipmatch')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('sipmatch')">×</button>
@@ -1001,7 +1051,7 @@
         <img src="assets/sipmatch/results.jpg" alt="SipMatch results: Pinot Noir for salmon" style="width:100%;border-radius:8px;border:1px solid var(--mist);"/>
       </div>
       <div class="modal-outcome">↗ Concept → PRD → working prototype · 67-drink dataset · Mood-based matching</div>
-      <a href="https://github.com/TastefullyYours/SipMatch-Prototype-for-MOR-531" target="_blank" rel="noopener" class="modal-deck-btn">View the Project ↗</a>
+      <a href="https://sip-match-prototype-for-mor-531.vercel.app/" target="_blank" rel="noopener" class="modal-deck-btn">Try the App ↗</a>
       <a href="https://github.com/TastefullyYours/SipMatch-Prototype-for-MOR-531/blob/main/PROCESS_LOG.md" target="_blank" rel="noopener" class="modal-deck-btn" style="margin-left:0.75rem;">View Process Log ↗</a>
     </div>
   </div>
