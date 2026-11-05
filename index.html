@@ -263,13 +263,24 @@
   @keyframes marquee { to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) { .brand-marquee-track { animation: none; } }
 
+  #projects { scroll-margin-top: 70px; }
+  .work-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: -1rem 0 1.25rem; }
+  .work-tab { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); background: transparent; border: 1px solid rgba(45,90,61,0.35); padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
+  .work-tab:hover { border-color: var(--green); }
+  .work-tab.active { background: var(--green); border-color: var(--green); color: var(--white); }
+  .work-brief { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--blue); line-height: 1.55; max-width: 760px; margin-bottom: 2rem; min-height: 1.6em; }
+  .projects-grid [data-tab-only] { display: none; }
+  .projects-grid.is-filtered > .project-card { grid-column: span 3; display: flex; }
+  .projects-grid.is-filtered > .project-card .project-card-img { height: 200px; }
+  .projects-grid.is-filtered > .project-card.span-full { grid-column: span 6; }
+  .projects-grid > .project-card.is-hidden, .writing-band.is-hidden { display: none !important; }
   .writing-band { margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; background: var(--sky); border: 1px solid var(--mist); border-left: 3px solid var(--lavender-deep); padding: 2rem 2.2rem; }
   .writing-band .project-body { margin-bottom: 0; }
   .writing-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 0.4rem; }
 
   #skills { background: var(--mist); max-width: 100%; padding: 6rem 0; }
   #skills > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
-  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-bottom: 4rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; margin-bottom: 4rem; }
   .skill-group-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(45,90,61,0.2); }
   .skill-group ul { list-style: none; }
   .skill-group li { font-size: 0.9rem; color: #4a4a5a; padding: 0.35rem 0; border-bottom: 1px solid rgba(30,48,85,0.06); }
@@ -300,7 +311,8 @@
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
     .projects-grid { grid-template-columns: 1fr; }
-    .projects-grid > .project-card, .projects-grid > .project-card--wide, .projects-grid > .project-card--half { grid-column: auto; }
+    .projects-grid > .project-card, .projects-grid > .project-card--wide, .projects-grid > .project-card--half, .projects-grid.is-filtered > .project-card, .projects-grid.is-filtered > .project-card.span-full { grid-column: auto; }
+    .work-tabs { margin-top: -1.25rem; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     #experience > .inner, #skills > .inner { padding: 0 1.5rem; }
     .modal { max-height: 90vh; }
@@ -638,8 +650,17 @@
 <section id="projects" class="fade-in">
   <p class="section-eyebrow">Projects</p>
   <h2 class="section-title">Selected work</h2>
+  <div class="work-tabs" role="group" aria-label="Filter projects by skill">
+    <button class="work-tab active" data-filter="all" aria-pressed="true">All</button>
+    <button class="work-tab" data-filter="social" aria-pressed="false">Social &amp; Content</button>
+    <button class="work-tab" data-filter="copy" aria-pressed="false">Copy &amp; Storytelling</button>
+    <button class="work-tab" data-filter="strategy" aria-pressed="false">Brand Strategy</button>
+    <button class="work-tab" data-filter="pr" aria-pressed="false">PR &amp; Events</button>
+    <button class="work-tab" data-filter="research" aria-pressed="false">Research &amp; Insights</button>
+  </div>
+  <p class="work-brief" id="work-brief" aria-live="polite"></p>
   <div class="projects-grid">
-    <div class="project-card project-card--wide fade-in">
+    <div class="project-card project-card--wide fade-in" data-tags="strategy research">
       <img class="project-card-img" src="assets/cafe.jpg" alt="Tiffany Blue Box Cafe" style="object-position: center 18%;"/>
       <div class="project-card-body">
         <p class="project-tag">Gen Z Strategy · Consumer Behavior · Luxury Retail</p>
@@ -649,7 +670,7 @@
         <a href="https://drive.google.com/file/d/1E3TSMr_qZFbNATzAarmjoaXqPwAXcsRC/view?usp=sharing" target="_blank" rel="noopener" class="project-btn" style="text-decoration:none;">View Full Deck →</a>
       </div>
     </div>
-   <div class="project-card fade-in">
+   <div class="project-card fade-in" data-tags="pr copy">
       <img class="project-card-img" src="assets/MMH%20logo.png" alt="Make Me Hungry"/>
       <div class="project-card-body">
         <p class="project-tag">PR Strategy · Cause Marketing</p>
@@ -659,7 +680,7 @@
         <button class="project-btn" onclick="openModal('mmh')">View My Work →</button>
       </div>
     </div>
-<div class="project-card fade-in">
+<div class="project-card fade-in" data-tags="strategy social">
       <img class="project-card-img" src="assets/11vnshirt.png" alt="11VN11"/>
       <div class="project-card-body">
         <p class="project-tag">Brand Strategy · Social Media</p>
@@ -669,7 +690,7 @@
         <button class="project-btn" onclick="openModal('vn11')">View My Work →</button>
       </div>
     </div>
-<div class="project-card fade-in">
+<div class="project-card fade-in" data-tags="strategy social pr">
       <img class="project-card-img" src="assets/Bon2%20Image.jpg" alt="Break On 2"/>
       <div class="project-card-body">
         <p class="project-tag">Revenue Strategy</p>
@@ -679,7 +700,7 @@
         <button class="project-btn" onclick="openModal('bo2')">View My Work →</button>
       </div>
     </div>
-<div class="project-card project-card--half fade-in">
+<div class="project-card project-card--half fade-in" data-tags="strategy social copy research">
       <img class="project-card-img" src="assets/offseason/cover.jpg" alt="Off Season OFF//MODE pitch cover" style="object-position: 70% 30%;"/>
       <div class="project-card-body">
         <p class="project-tag">SEO + GEO Strategy · Brand Identity · Google Pitch</p>
@@ -689,7 +710,7 @@
         <button class="project-btn" onclick="openModal('offseason')">View My Work →</button>
       </div>
     </div>
-<div class="project-card project-card--half fade-in">
+<div class="project-card project-card--half fade-in" data-tags="strategy research">
       <img class="project-card-img" src="assets/sipmatch/sipmatch-banner.jpg" alt="SipMatch app screens"/>
       <div class="project-card-body">
         <p class="project-tag">Product Strategy · Consumer Psychology · Prototyping</p>
@@ -700,7 +721,27 @@
         <a href="https://sip-match-prototype-for-mor-531.vercel.app/" target="_blank" rel="noopener" class="project-btn" style="margin-top:0.6rem;text-decoration:none;">Try the App ↗</a>
       </div>
     </div>
-<div class="project-card project-card--wide fade-in">
+<div class="project-card fade-in" data-tags="social" data-tab-only>
+      <img class="project-card-img" src="assets/Saijo%20Screenshot%202.png" alt="Saijo Hand Roll Instagram post" style="object-position: left 30%;"/>
+      <div class="project-card-body">
+        <p class="project-tag">Social Strategy · Creators · Community</p>
+        <h3 class="project-title">JINYA Holdings — Social Media Coordinator</h3>
+        <p class="project-body">Content strategy and creative direction across Instagram, TikTok, Facebook, and LinkedIn for a hospitality group with 85+ locations: monthly content calendars, influencer outreach, community management, and analytics-driven posting.</p>
+        <p class="project-outcome">20M+ organic views · 1M+ combined followers · 4 platforms</p>
+        <button class="project-btn" onclick="openModal('jinya')">View My Work →</button>
+      </div>
+    </div>
+<div class="project-card fade-in" data-tags="social copy" data-tab-only>
+      <img class="project-card-img" src="assets/social/feed-banner.jpg" alt="Three short-form food videos"/>
+      <div class="project-card-body">
+        <p class="project-tag">Short-Form Video · UGC-Style · TikTok</p>
+        <h3 class="project-title">Made for the Feed</h3>
+        <p class="project-body">Short-form food content, for brands and for my own feed: a street-challenge video for Saijo Hand Roll, plus videos I write, film, and edit myself on TikTok.</p>
+        <p class="project-outcome">11M views · 880K likes on the Saijo challenge</p>
+        <a href="social.html" class="project-btn" style="text-decoration:none;">Watch the Videos →</a>
+      </div>
+    </div>
+<div class="project-card project-card--wide fade-in" data-tags="research strategy">
       <img class="project-card-img" src="assets/spoonsforsupportSS.png" alt="Spoons for Support"/>
       <div class="project-card-body">
         <p class="project-tag">Behavioral Research · USC Dornsife · Cause Marketing</p>
@@ -711,7 +752,7 @@
       </div>
     </div>
   </div>
-  <div class="writing-band fade-in">
+  <div class="writing-band fade-in" data-tags="copy">
     <div>
       <p class="project-tag">Writing Samples</p>
       <h3 class="writing-title">Tastefully Yours</h3>
@@ -735,6 +776,17 @@
           <li>Campaign Development</li>
           <li>Cause Marketing</li>
           <li>Behavioral Economics</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Writing & Content</p>
+        <ul>
+          <li>Copywriting</li>
+          <li>Brand Voice</li>
+          <li>Press Releases & Pitches</li>
+          <li>Captions & Scripts</li>
+          <li>Short-Form Video & UGC</li>
+          <li>Editing & Proofreading</li>
         </ul>
       </div>
       <div class="skill-group">
@@ -1129,6 +1181,47 @@
     document.querySelector('.tagline-vine').classList.add('grown');
   }, 600);
  
+  // Project filter tabs, with a short brief per tab and shareable links (e.g. #social)
+  const workBriefs = {
+    all: 'Strategy, content, and storytelling for food, beverage, and lifestyle brands. Choose a lens to see the work behind each skill.',
+    social: 'I ran social for an 85+ location restaurant group, informed campaigns that drew 20M+ organic views, and make short-form food content of my own. This is the feed side of my work: calendars, creators, community, and the numbers behind them.',
+    copy: 'Taglines, press pitches, campaign concepts, and the food essays I write on Substack. I write across voices, from luxury to playful to press-ready, and I like finding the one a brand already has.',
+    strategy: 'Repositioning, growth plans, and campaigns grounded in how people see themselves. Each starts with a real business problem and ends with a plan someone can run.',
+    pr: 'Earned media, press dinners, activations, and events, plus the stories that make a brand worth writing about.',
+    research: 'Consumer psychology is where I start: behavioral research, AI visibility audits, and the insight behind every recommendation.'
+  };
+  const workGrid = document.querySelector('.projects-grid');
+  const workCards = [...workGrid.querySelectorAll(':scope > .project-card')];
+  const writingBand = document.querySelector('.writing-band');
+  function setWorkFilter(filter) {
+    if (!workBriefs[filter]) filter = 'all';
+    document.querySelectorAll('.work-tab').forEach(t => {
+      const on = t.dataset.filter === filter;
+      t.classList.toggle('active', on); t.setAttribute('aria-pressed', on);
+    });
+    document.getElementById('work-brief').textContent = workBriefs[filter];
+    workGrid.classList.toggle('is-filtered', filter !== 'all');
+    const shown = [];
+    workCards.forEach(c => {
+      const tagged = (c.dataset.tags || '').split(' ').includes(filter);
+      const show = filter === 'all' ? !c.hasAttribute('data-tab-only') : tagged;
+      c.classList.toggle('is-hidden', !show);
+      c.classList.remove('span-full');
+      if (show) { shown.push(c); c.classList.add('visible'); if (filter !== 'all') c.style.display = 'flex'; else c.style.display = ''; }
+    });
+    if (filter !== 'all' && shown.length % 2 === 1) shown[shown.length - 1].classList.add('span-full');
+    writingBand.classList.toggle('is-hidden', !(filter === 'all' || filter === 'copy'));
+  }
+  document.querySelectorAll('.work-tab').forEach(t => t.addEventListener('click', () => {
+    setWorkFilter(t.dataset.filter);
+    history.replaceState(null, '', t.dataset.filter === 'all' ? '#projects' : '#' + t.dataset.filter);
+  }));
+  const startFilter = location.hash.slice(1);
+  setWorkFilter(startFilter);
+  if (workBriefs[startFilter] && startFilter !== 'all') {
+    window.addEventListener('load', () => document.getElementById('projects').scrollIntoView());
+  }
+
   // Fade-in on scroll
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver((entries) => {
