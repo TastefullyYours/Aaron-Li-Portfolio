@@ -268,8 +268,7 @@
   .work-tab { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); background: transparent; border: 1px solid rgba(45,90,61,0.35); padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
   .work-tab:hover { border-color: var(--green); }
   .work-tab.active { background: var(--green); border-color: var(--green); color: var(--white); }
-  .work-brief a { color: var(--green); font-style: normal; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--green-light); white-space: nowrap; }
-  .work-brief a:hover { color: var(--green-light); }
+  .work-brief a { color: var(--green); font-style: normal; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
   .work-brief { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--blue); line-height: 1.55; max-width: 760px; margin-bottom: 2rem; min-height: 1.6em; }
   .projects-grid [data-tab-only] { display: none; }
   .projects-grid.is-filtered > .project-card { grid-column: span 3; display: flex; }
@@ -370,6 +369,63 @@
   .botanical-divider.visible svg path,
   .botanical-divider.visible svg ellipse {
     stroke-dashoffset: 0;
+  }
+  /* Paper grain over the whole page */
+  body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 90; opacity: 0.08; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.19 0 0 0 0 0.33 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* Vine underline: grows on hover and sprouts a leaf */
+  .vine, .nav-links a { position: relative; text-decoration: none; background: linear-gradient(var(--green-light), var(--green-light)) no-repeat left bottom / 0% 1.5px; padding-bottom: 3px; transition: background-size 0.45s ease, color 0.2s; }
+  .vine:hover, .nav-links a:hover { background-size: 100% 1.5px; }
+  .vine::after, .nav-links a::after { content: ''; position: absolute; right: -8px; bottom: -1px; width: 8px; height: 5px; background: var(--green-light); border-radius: 0 100% 0 100%; transform: scale(0) rotate(-25deg); transform-origin: left center; transition: transform 0.25s ease 0.3s; }
+  .vine:hover::after, .nav-links a:hover::after { transform: scale(1) rotate(-25deg); }
+
+  /* Numbers band */
+  .numbers-band { background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); padding: 4.5rem 1.5rem; position: relative; overflow: hidden; }
+  .numbers-inner { max-width: 1100px; margin: 0 auto; }
+  .numbers-band .section-eyebrow { text-align: center; margin-bottom: 2.5rem; }
+  .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+  .number-value { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(3.2rem, 7vw, 5.8rem); line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
+  .number-label { margin-top: 0.75rem; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); line-height: 1.6; }
+  .number-source { display: block; margin-top: 0.25rem; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: none; color: var(--blue); font-style: italic; }
+
+  /* Copy ticker */
+  .copy-ticker { background: var(--white); padding: 3rem 0 3.5rem; overflow: hidden; }
+  .copy-ticker .section-eyebrow { text-align: center; margin-bottom: 1.25rem; }
+  .copy-track { display: flex; width: max-content; animation: marquee 48s linear infinite reverse; }
+  .copy-ticker:hover .copy-track { animation-play-state: paused; }
+  .copy-group { list-style: none; display: flex; flex-shrink: 0; align-items: baseline; }
+  .copy-group li { display: flex; align-items: baseline; gap: 0.9rem; padding: 0 2.5rem; white-space: nowrap; position: relative; }
+  .copy-group li::after { content: '✦'; position: absolute; right: -0.4rem; top: 50%; transform: translateY(-50%); color: var(--lavender-deep); font-size: 0.8rem; }
+  .copy-line { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.6rem, 3.2vw, 2.4rem); color: var(--navy); }
+  .copy-credit { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); }
+
+  /* Taped project cards */
+  .projects-grid > .project-card::after { content: ''; position: absolute; top: 12px; right: -24px; width: 104px; height: 24px; transform: rotate(38deg); z-index: 3; pointer-events: none;
+    background: repeating-linear-gradient(90deg, rgba(197,180,214,0.85) 0 10px, rgba(216,203,232,0.85) 10px 20px); box-shadow: 0 1px 3px rgba(30,48,85,0.15); }
+  .projects-grid > .project-card:nth-child(even)::after { right: auto; left: -24px; transform: rotate(-38deg); background: repeating-linear-gradient(90deg, rgba(168,200,232,0.85) 0 10px, rgba(221,232,245,0.85) 10px 20px); }
+
+  /* Sticker badge on the headshot */
+  .headshot-wrap { position: relative; }
+  .sticker { position: absolute; top: -34px; right: -26px; width: 118px; height: 118px; z-index: 2; filter: drop-shadow(0 6px 14px rgba(30,48,85,0.2)); }
+  .sticker-text { transform-origin: 60px 60px; animation: spin 22s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Sliding tab highlight + card shuffle */
+  .work-tabs { position: relative; }
+  .work-tab { position: relative; z-index: 1; }
+  .work-tab.active { background: transparent; border-color: transparent; color: var(--white); }
+  .work-tab-indicator { position: absolute; z-index: 0; border-radius: 999px; background: var(--green); pointer-events: none; }
+  .work-tabs.ready .work-tab-indicator { transition: left 0.35s cubic-bezier(0.22,1,0.36,1), top 0.35s cubic-bezier(0.22,1,0.36,1), width 0.35s cubic-bezier(0.22,1,0.36,1), height 0.35s; }
+  @keyframes shuffleIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .projects-grid > .project-card.shuffle { animation: shuffleIn 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+
+  @media (max-width: 900px) {
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2.75rem; }
+    .sticker { width: 96px; height: 96px; top: -28px; right: -6px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .copy-track, .sticker-text, .projects-grid > .project-card.shuffle { animation: none; }
   }
 </style>
 </head>
@@ -477,10 +533,24 @@
       <p>Once upon a time I was the 10 year old behind the cash register at a Chinese restaurant, and now I've grown up into a Food and Beverage Marketer! I'm graduating in December 2026 from USC with a MS in Marketing and a BA in Psychology.</p>
       <p>It's my psychological background that powers my marketing. The average person doesn't always have the capacity to make mindful choices, so it's my job as a marketer to guide them to the decisions they want to make. I study consumer behavior, and in particular the idea that people behave according to their salient identities. Currently, I'm working with food and beverage brands at Make Me Hungry, a boutique PR agency in Los Angeles.</p>
       <p>I love the food space, because it's a place built around people, and more importantly communities. Food tells stories, and a good story is always something people can see themselves in. I'm building my skills toward strategy and marketing roles and as a lifelong learner, I hope to grow with you! Whether that's professionally, learning more about how people think, or trying out each other's recipes :).</p>
-      <p>I also write food essays on the side. <a href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" style="color: var(--green); text-decoration: underline;">Read Tastefully Yours →</a></p>
+      <p>I also write food essays on the side. <a class="vine" href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" style="color: var(--green);">Read Tastefully Yours →</a></p>
     </div>
     <div class="about-sidebar">
-      <img class="sidebar-headshot" src="assets/headshot.jpg" alt="Aaron Li" />
+      <div class="headshot-wrap">
+        <img class="sidebar-headshot" src="assets/headshot.jpg" alt="Aaron Li" />
+        <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="58" fill="#FFFFFF"/>
+          <circle cx="60" cy="60" r="55" fill="none" stroke="#C5B4D6" stroke-width="1"/>
+          <defs><path id="sticker-circle" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
+          <g class="sticker-text">
+            <text font-family="DM Sans, sans-serif" font-size="9.2" letter-spacing="1.2" fill="#1E3055"><textPath href="#sticker-circle" textLength="266" lengthAdjust="spacing">FOOD · BEV · MARKETING · STORYTELLING ·</textPath></text>
+          </g>
+          <circle cx="60" cy="60" r="20" fill="#C5B4D6" opacity="0.45"/>
+          <circle cx="60" cy="60" r="20" fill="none" stroke="#9B85B5" stroke-width="1.6"/>
+          <circle cx="60" cy="60" r="7" fill="#9B85B5" opacity="0.5"/>
+          <g stroke="#9B85B5" stroke-width="1" opacity="0.6"><line x1="60" y1="41" x2="60" y2="79"/><line x1="41" y1="60" x2="79" y2="60"/><line x1="46.5" y1="46.5" x2="73.5" y2="73.5"/><line x1="46.5" y1="73.5" x2="73.5" y2="46.5"/></g>
+        </svg>
+      </div>
       <div class="sidebar-block">
         <p class="sidebar-label">Education</p>
         <ul>
@@ -648,6 +718,18 @@
   </svg>
 </div>
 
+<section class="numbers-band" aria-label="By the numbers">
+  <div class="numbers-inner">
+    <p class="section-eyebrow">By the numbers</p>
+    <div class="numbers-grid">
+      <div><div class="number-value" data-count="20" data-suffix="M+">20M+</div><p class="number-label">Organic views<span class="number-source">JINYA campaigns</span></p></div>
+      <div><div class="number-value" data-count="11" data-suffix="M">11M</div><p class="number-label">Views on one video<span class="number-source">Saijo Hand Roll</span></p></div>
+      <div><div class="number-value" data-count="54" data-prefix="$" data-suffix="M+">$54M+</div><p class="number-label">PR impact quantified<span class="number-source">Make Me Hungry</span></p></div>
+      <div><div class="number-value" data-count="500" data-suffix="%">500%</div><p class="number-label">Net worth growth<span class="number-source">Break On 2</span></p></div>
+    </div>
+  </div>
+</section>
+
 <div class="photo-accent photo-accent--navy">
   <img src="assets/banner-1.jpeg" alt="" aria-hidden="true" style="object-position: center 30%;">
 </div>
@@ -655,6 +737,7 @@
   <p class="section-eyebrow">Projects</p>
   <h2 class="section-title">Selected work</h2>
   <div class="work-tabs" role="group" aria-label="Filter projects by skill">
+    <span class="work-tab-indicator" aria-hidden="true"></span>
     <button class="work-tab active" data-filter="all" aria-pressed="true">All</button>
     <button class="work-tab" data-filter="social" aria-pressed="false">Social &amp; Content</button>
     <button class="work-tab" data-filter="copy" aria-pressed="false">Copy &amp; Storytelling</button>
@@ -765,6 +848,14 @@
     <a href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" class="project-btn" style="text-decoration:none;align-self:center;">Read on Substack →</a>
   </div>
 </section>
+
+<div class="copy-ticker" aria-label="Lines I've written">
+  <p class="section-eyebrow">Lines I&rsquo;ve written</p>
+  <div class="copy-track">
+    <ul class="copy-group"><li><span class="copy-line">&ldquo;This is not a campaign. This is who we are.&rdquo;</span><span class="copy-credit">Make Me Hungry · Lupus Awareness</span></li><li><span class="copy-line">&ldquo;Your team has a schedule. Your style doesn&rsquo;t.&rdquo;</span><span class="copy-credit">Off Season · OFF//MODE</span></li><li><span class="copy-line">&ldquo;What&rsquo;s your mode?&rdquo;</span><span class="copy-credit">Off Season · Campaign CTA</span></li><li><span class="copy-line">&ldquo;A match for every meal.&rdquo;</span><span class="copy-credit">SipMatch</span></li><li><span class="copy-line">&ldquo;This is not a campaign. This is who we are.&rdquo;</span><span class="copy-credit">Make Me Hungry · Lupus Awareness</span></li><li><span class="copy-line">&ldquo;Your team has a schedule. Your style doesn&rsquo;t.&rdquo;</span><span class="copy-credit">Off Season · OFF//MODE</span></li><li><span class="copy-line">&ldquo;What&rsquo;s your mode?&rdquo;</span><span class="copy-credit">Off Season · Campaign CTA</span></li><li><span class="copy-line">&ldquo;A match for every meal.&rdquo;</span><span class="copy-credit">SipMatch</span></li></ul>
+    <ul class="copy-group" aria-hidden="true"><li><span class="copy-line">&ldquo;This is not a campaign. This is who we are.&rdquo;</span><span class="copy-credit">Make Me Hungry · Lupus Awareness</span></li><li><span class="copy-line">&ldquo;Your team has a schedule. Your style doesn&rsquo;t.&rdquo;</span><span class="copy-credit">Off Season · OFF//MODE</span></li><li><span class="copy-line">&ldquo;What&rsquo;s your mode?&rdquo;</span><span class="copy-credit">Off Season · Campaign CTA</span></li><li><span class="copy-line">&ldquo;A match for every meal.&rdquo;</span><span class="copy-credit">SipMatch</span></li><li><span class="copy-line">&ldquo;This is not a campaign. This is who we are.&rdquo;</span><span class="copy-credit">Make Me Hungry · Lupus Awareness</span></li><li><span class="copy-line">&ldquo;Your team has a schedule. Your style doesn&rsquo;t.&rdquo;</span><span class="copy-credit">Off Season · OFF//MODE</span></li><li><span class="copy-line">&ldquo;What&rsquo;s your mode?&rdquo;</span><span class="copy-credit">Off Season · Campaign CTA</span></li><li><span class="copy-line">&ldquo;A match for every meal.&rdquo;</span><span class="copy-credit">SipMatch</span></li></ul>
+  </div>
+</div>
 
 <div id="skills" class="fade-in">
   <div class="inner">
@@ -1190,7 +1281,7 @@
   // Project filter tabs, with a short brief per tab and shareable links (e.g. #social)
   const workBriefs = {
     all: 'Strategy, content, and storytelling. Flip through a few to see what I\'m all about.',
-    social: 'I ran organic and paid social for an 80+ location restaurant group, informed social media campaigns drawing 20M+ organic views, and make short-form content of my own. This is how I\'ve used social media at work and for personal self-expression across calendars, creators, and community. <a href="social.html">Watch the videos →</a>',
+    social: 'I ran organic and paid social for an 80+ location restaurant group, informed social media campaigns drawing 20M+ organic views, and make short-form content of my own. This is how I\'ve used social media at work and for personal self-expression across calendars, creators, and community. <a class="vine" href="social.html">Watch the videos →</a>',
     copy: 'Taglines, press pitches, campaign concepts, and the food essays I write (Go Substack!!). I write across voices, from luxury to playful to press-ready, and I like to establish this voice for a brand.',
     strategy: 'Positioning, growth plans, and campaigns grounded in psychology and perceptions. Everything goes back to the customer and creating concrete approaches.',
     pr: 'Earned media, press dinners, activations, and events, I\'ve pitched the stories that make a brand worth writing about.',
@@ -1216,17 +1307,54 @@
       if (show) { shown.push(c); c.classList.add('visible'); if (filter !== 'all') c.style.display = 'flex'; else c.style.display = ''; }
     });
     if (filter !== 'all' && shown.length % 2 === 1) shown[shown.length - 1].classList.add('span-full');
+    moveTabIndicator();
+    if (workGrid.dataset.ready) {
+      shown.forEach((c, i) => {
+        c.classList.remove('shuffle'); void c.offsetWidth;
+        c.style.animationDelay = (i * 60) + 'ms'; c.classList.add('shuffle');
+      });
+    }
+    workGrid.dataset.ready = '1';
     writingBand.classList.toggle('is-hidden', !(filter === 'all' || filter === 'copy'));
   }
+  function moveTabIndicator() {
+    const active = document.querySelector('.work-tab.active');
+    const ind = document.querySelector('.work-tab-indicator');
+    if (!active || !ind) return;
+    ind.style.left = active.offsetLeft + 'px'; ind.style.top = active.offsetTop + 'px';
+    ind.style.width = active.offsetWidth + 'px'; ind.style.height = active.offsetHeight + 'px';
+  }
+  window.addEventListener('resize', moveTabIndicator);
   document.querySelectorAll('.work-tab').forEach(t => t.addEventListener('click', () => {
     setWorkFilter(t.dataset.filter);
     history.replaceState(null, '', t.dataset.filter === 'all' ? '#projects' : '#' + t.dataset.filter);
   }));
   const startFilter = location.hash.slice(1);
   setWorkFilter(startFilter);
+  requestAnimationFrame(() => { moveTabIndicator(); document.querySelector('.work-tabs').classList.add('ready'); });
+  document.fonts && document.fonts.ready.then(moveTabIndicator);
   if (workBriefs[startFilter] && startFilter !== 'all') {
     window.addEventListener('load', () => document.getElementById('projects').scrollIntoView());
   }
+
+  // By-the-numbers counters
+  const numberEls = document.querySelectorAll('.number-value[data-count]');
+  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const numberObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target; numberObserver.unobserve(el);
+      if (noMotion) return;
+      const end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+      const t0 = performance.now(), dur = 1800;
+      (function tick(now) {
+        const k = Math.min((now - t0) / dur, 1), eased = 1 - Math.pow(1 - k, 3);
+        el.textContent = pre + Math.round(end * eased) + suf;
+        if (k < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: 0.6 });
+  numberEls.forEach(el => numberObserver.observe(el));
 
   // Fade-in on scroll
   const fadeEls = document.querySelectorAll('.fade-in');
