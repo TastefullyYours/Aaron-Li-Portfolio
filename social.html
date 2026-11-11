@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aaron Li — Social Content</title>
-<meta name="description" content="Short-form food content, for brands and for my own feed.">
+<title>Aaron Li | Social Content</title>
+<meta name="description" content="Short-form food content for brands and from my personal accounts, because your social media person should be on social media!">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Aaron Li — Social Content">
-<meta property="og:description" content="Short-form food content, for brands and for my own feed.">
+<meta property="og:title" content="Aaron Li | Social Content">
+<meta property="og:description" content="Short-form food content for brands and from my personal accounts, because your social media person should be on social media!">
 <meta property="og:url" content="https://tastefullyyours.github.io/Aaron-Li-Portfolio/social.html">
 <meta property="og:image" content="https://tastefullyyours.github.io/Aaron-Li-Portfolio/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -71,7 +71,7 @@
   .social-stats { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.03em; color: var(--green); margin-bottom: 0.4rem; }
   .social-stats::before { content: '↗ '; color: var(--green-light); }
   .social-caption { font-size: 0.85rem; color: #5a5a6a; line-height: 1.65; margin-bottom: 0.85rem; }
-  .social-link { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); text-decoration: none; border-bottom: 1px solid var(--green-light); padding-bottom: 0.1rem; }
+  .social-link { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
   .social-link:hover { color: var(--green-light); }
 
   .back { text-align: center; padding: 4rem 1.5rem 6rem; }
@@ -95,6 +95,15 @@
     .nav-pill { padding: 0.4rem 0.7rem; font-size: 0.65rem; letter-spacing: 0.1em; }
     .social-grid { grid-template-columns: minmax(0, 300px); justify-content: center; }
   }
+  /* Paper grain over the whole page */
+  body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 90; opacity: 0.08; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.19 0 0 0 0 0.33 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* Vine underline: grows on hover and sprouts a leaf */
+  .vine, .nav-links a, .social-link { position: relative; text-decoration: none; background: linear-gradient(var(--green-light), var(--green-light)) no-repeat left bottom / 0% 1.5px; padding-bottom: 3px; transition: background-size 0.45s ease, color 0.2s; }
+  .vine:hover, .nav-links a:hover, .social-link:hover { background-size: 100% 1.5px; }
+  .vine::after, .nav-links a::after, .social-link::after { content: ''; position: absolute; right: -8px; bottom: -1px; width: 8px; height: 5px; background: var(--green-light); border-radius: 0 100% 0 100%; transform: scale(0) rotate(-25deg); transform-origin: left center; transition: transform 0.25s ease 0.3s; }
+  .vine:hover::after, .nav-links a:hover::after, .social-link:hover::after { transform: scale(1) rotate(-25deg); }
 </style>
 </head>
 <body>
@@ -115,8 +124,8 @@
 
 <header>
   <p class="eyebrow">Social Content Portfolio</p>
-  <h1>Made for the feed</h1>
-  <p class="header-sub">Short-form food content, for brands and for my own feed — because the best way to understand an audience is to be part of it.</p>
+  <h1>From the feed</h1>
+  <p class="header-sub">Short-form food content for brands and from my personal accounts, because your social media person should be on social media!</p>
 </header>
 
 <!-- To add a post: copy one <article class="social-card"> block into the right section,
