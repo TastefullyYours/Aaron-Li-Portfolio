@@ -381,7 +381,7 @@
   .vine:hover::after, .nav-links a:hover::after { transform: scale(1) rotate(-25deg); }
 
   /* Numbers band */
-  .numbers-band { background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); padding: 4.5rem 1.5rem; position: relative; overflow: hidden; }
+  .numbers-band { max-width: none; margin: 0; background: linear-gradient(135deg, #A9C3E0 0%, #C3B0DD 55%, #D9CBE8 100%); padding: 4.5rem 1.5rem; position: relative; overflow: hidden; }
   .numbers-inner { max-width: 1100px; margin: 0 auto; }
   .numbers-band .section-eyebrow { text-align: center; margin-bottom: 2.5rem; }
   .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
@@ -400,16 +400,7 @@
   .copy-line { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.6rem, 3.2vw, 2.4rem); color: var(--navy); }
   .copy-credit { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); }
 
-  /* Taped project cards */
-  .projects-grid > .project-card::after { content: ''; position: absolute; top: 12px; right: -24px; width: 104px; height: 24px; transform: rotate(38deg); z-index: 3; pointer-events: none;
-    background: repeating-linear-gradient(90deg, rgba(197,180,214,0.85) 0 10px, rgba(216,203,232,0.85) 10px 20px); box-shadow: 0 1px 3px rgba(30,48,85,0.15); }
-  .projects-grid > .project-card:nth-child(even)::after { right: auto; left: -24px; transform: rotate(-38deg); background: repeating-linear-gradient(90deg, rgba(168,200,232,0.85) 0 10px, rgba(221,232,245,0.85) 10px 20px); }
 
-  /* Sticker badge on the headshot */
-  .headshot-wrap { position: relative; }
-  .sticker { position: absolute; top: -34px; right: -26px; width: 118px; height: 118px; z-index: 2; filter: drop-shadow(0 6px 14px rgba(30,48,85,0.2)); }
-  .sticker-text { transform-origin: 60px 60px; animation: spin 22s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* Sliding tab highlight + card shuffle */
   .work-tabs { position: relative; }
@@ -422,10 +413,9 @@
 
   @media (max-width: 900px) {
     .numbers-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2.75rem; }
-    .sticker { width: 96px; height: 96px; top: -28px; right: -6px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .copy-track, .sticker-text, .projects-grid > .project-card.shuffle { animation: none; }
+    .copy-track, .projects-grid > .project-card.shuffle { animation: none; }
   }
 </style>
 </head>
@@ -536,21 +526,7 @@
       <p>I also write food essays on the side. <a class="vine" href="https://tastefullyyours.substack.com/" target="_blank" rel="noopener" style="color: var(--green);">Read Tastefully Yours →</a></p>
     </div>
     <div class="about-sidebar">
-      <div class="headshot-wrap">
-        <img class="sidebar-headshot" src="assets/headshot.jpg" alt="Aaron Li" />
-        <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true">
-          <circle cx="60" cy="60" r="58" fill="#FFFFFF"/>
-          <circle cx="60" cy="60" r="55" fill="none" stroke="#C5B4D6" stroke-width="1"/>
-          <defs><path id="sticker-circle" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
-          <g class="sticker-text">
-            <text font-family="DM Sans, sans-serif" font-size="9.2" letter-spacing="1.2" fill="#1E3055"><textPath href="#sticker-circle" textLength="266" lengthAdjust="spacing">FOOD · BEV · MARKETING · STORYTELLING ·</textPath></text>
-          </g>
-          <circle cx="60" cy="60" r="20" fill="#C5B4D6" opacity="0.45"/>
-          <circle cx="60" cy="60" r="20" fill="none" stroke="#9B85B5" stroke-width="1.6"/>
-          <circle cx="60" cy="60" r="7" fill="#9B85B5" opacity="0.5"/>
-          <g stroke="#9B85B5" stroke-width="1" opacity="0.6"><line x1="60" y1="41" x2="60" y2="79"/><line x1="41" y1="60" x2="79" y2="60"/><line x1="46.5" y1="46.5" x2="73.5" y2="73.5"/><line x1="46.5" y1="73.5" x2="73.5" y2="46.5"/></g>
-        </svg>
-      </div>
+      <img class="sidebar-headshot" src="assets/headshot.jpg" alt="Aaron Li" />
       <div class="sidebar-block">
         <p class="sidebar-label">Education</p>
         <ul>
